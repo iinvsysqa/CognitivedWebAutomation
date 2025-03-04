@@ -11,7 +11,11 @@
         <package name="testcases_landingPageModule" />
         <package name="testcases_myCoursePageModule" />
         <package name="testcases_profilePageModule" />
+<<<<<<< HEAD
 		<package name="testcases_signInPageModule" />
+=======
+        <package name="testcases_signInPageModule" />
+>>>>>>> 65bbe92361ebe42fffb021299c2992f5053fac22
     </packages>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->
