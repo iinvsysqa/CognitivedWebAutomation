@@ -3,34 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-<<<<<<< HEAD
-      <class name="testcase_assessment_module.TC_06_Course_Level_Assessment">
-=======
-      <class name="allCourseModule.TC_01_AllcoursePage">
->>>>>>> 113976c03705b4b7928914868e10432f5030ef02
+      <class name="testcases_general.TC_Sample">
         <methods>
-          <include name="startTestCase"/>
-<<<<<<< HEAD
+          <include name="signIntoAccont"/>
           <include name="beforeMethod"/>
           <include name="beforeSuite"/>
-          <include name="createAccount"/>
-          <include name="afterMethod"/>
+          <include name="startTestCase"/>
           <include name="beforeTest"/>
+          <include name="afterMethod"/>
           <include name="afterSuite"/>
-=======
-          <include name="AllcoursePage"/>
-          <include name="beforeSuite"/>
-          <include name="afterMethod"/>
-          <include name="beforeTest"/>
->>>>>>> 113976c03705b4b7928914868e10432f5030ef02
           <include name="afterTest"/>
-          <include name="afterSuite"/>
         </methods>
-<<<<<<< HEAD
-      </class> <!-- testcase_assessment_module.TC_06_Course_Level_Assessment -->
-=======
-      </class> <!-- allCourseModule.TC_01_AllcoursePage -->
->>>>>>> 113976c03705b4b7928914868e10432f5030ef02
+      </class> <!-- testcases_general.TC_Sample -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -3,30 +3,90 @@
 <suite name="Failed suite [WebApplication]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.TC_04_TakeChapterAssessment">
+      <class name="testcases_profilePageModule.TC_03_ProfilePage">
         <methods>
           <include name="beforeMethod"/>
-          <include name="createAccount"/>
-          <include name="beforeSuite"/>
           <include name="startTestCase"/>
-          <include name="afterMethod"/>
+          <include name="beforeSuite"/>
+          <include name="Profilepage"/>
           <include name="beforeTest"/>
+          <include name="afterMethod"/>
           <include name="afterTest"/>
           <include name="afterSuite"/>
         </methods>
-      </class> <!-- testcases.TC_04_TakeChapterAssessment -->
-      <class name="testcases.TC_02_TakeChapterAssessment">
+      </class> <!-- testcases_profilePageModule.TC_03_ProfilePage -->
+      <class name="testcases_myCoursePageModule.TC_05_Chapter_N_Topic_Assessment">
+        <methods>
+          <include name="Mycoursepage"/>
+          <include name="beforeMethod"/>
+          <include name="startTestCase"/>
+          <include name="beforeSuite"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="afterTest"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- testcases_myCoursePageModule.TC_05_Chapter_N_Topic_Assessment -->
+      <class name="testcases_profilePageModule.TC_02_ProfilePage">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="beforeSuite"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="Profilepage"/>
+          <include name="afterTest"/>
+          <include name="afterSuite"/>
+          <include name="startTestCase"/>
+        </methods>
+      </class> <!-- testcases_profilePageModule.TC_02_ProfilePage -->
+      <class name="testcases_createAccountModule.TC_04_CreateAccount">
         <methods>
           <include name="startTestCase"/>
           <include name="beforeMethod"/>
           <include name="beforeSuite"/>
-          <include name="createAccount"/>
-          <include name="afterMethod"/>
           <include name="beforeTest"/>
-          <include name="afterSuite"/>
+          <include name="afterMethod"/>
+          <include name="createAccount"/>
           <include name="afterTest"/>
+          <include name="afterSuite"/>
         </methods>
-      </class> <!-- testcases.TC_02_TakeChapterAssessment -->
+      </class> <!-- testcases_createAccountModule.TC_04_CreateAccount -->
+      <class name="testcases_myCoursePageModule.TC_03_Course_Content_Page">
+        <methods>
+          <include name="startTestCase"/>
+          <include name="beforeMethod"/>
+          <include name="Mycoursepage"/>
+          <include name="beforeSuite"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="afterTest"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- testcases_myCoursePageModule.TC_03_Course_Content_Page -->
+      <class name="testcases_profilePageModule.TC_04_ProfilePage">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="beforeSuite"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="Profilepage"/>
+          <include name="afterTest"/>
+          <include name="afterSuite"/>
+          <include name="startTestCase"/>
+        </methods>
+      </class> <!-- testcases_profilePageModule.TC_04_ProfilePage -->
+      <class name="testcases_createAccountModule.TC_03_CreateAccount">
+        <methods>
+          <include name="beforeMethod"/>
+          <include name="startTestCase"/>
+          <include name="createAccount"/>
+          <include name="beforeSuite"/>
+          <include name="beforeTest"/>
+          <include name="afterMethod"/>
+          <include name="afterTest"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- testcases_createAccountModule.TC_03_CreateAccount -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [WebApplication] -->

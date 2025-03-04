@@ -48,6 +48,8 @@ public class TC_01_AllcoursePage extends WebApplicationWrappers{
 			allcoursepage=new AllCoursePage(driver);
 			
 			//signins
+			
+			
 			LandingPage.clickSignInButton();
 			LandingPage.enterEmailsigin(email);
 			LandingPage.enetrpasswordsignin(password);

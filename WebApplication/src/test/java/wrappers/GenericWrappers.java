@@ -75,7 +75,7 @@ public class GenericWrappers {
 			driver.get(url);
 
 			primaryWindowHandle = driver.getWindowHandle();
-
+			Thread.sleep(3000);			
 			Reporter.reportStep("The URL : " + url + " launched successfully in" + browser + " browser ", "PASS");
 			bReturn = true;
 
@@ -288,7 +288,7 @@ public class GenericWrappers {
 	
 	protected void scrollToElements(WebElement element) {
 		jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView(false);", element);
+        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
         try {
             Thread.sleep(1000); // Adding a slight delay to allow the scroll to complete
         } catch (InterruptedException e) {
