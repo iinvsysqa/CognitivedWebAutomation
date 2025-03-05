@@ -2,44 +2,44 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-03-05T15:04:03 IST" name="Default suite" finished-at="2025-03-05T15:04:24 IST" duration-ms="21182">
+  <suite started-at="2025-03-05T15:48:17 IST" name="Default suite" finished-at="2025-03-05T15:49:51 IST" duration-ms="93986">
     <groups>
     </groups>
-    <test started-at="2025-03-05T15:04:03 IST" name="Default test" finished-at="2025-03-05T15:04:24 IST" duration-ms="21182">
-      <class name="testcases.TC05_UserHomePageCheck">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:03 IST" name="beforeSuite" finished-at="2025-03-05T15:04:03 IST" duration-ms="458" status="PASS">
+    <test started-at="2025-03-05T15:48:17 IST" name="Default test" finished-at="2025-03-05T15:49:51 IST" duration-ms="93986">
+      <class name="testcases.TC01_LandingPageCheck">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:48:17 IST" name="beforeSuite" finished-at="2025-03-05T15:48:17 IST" duration-ms="162" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:03 IST" name="beforeTest" finished-at="2025-03-05T15:04:03 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="beforeTest()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:48:17 IST" name="beforeTest" finished-at="2025-03-05T15:48:17 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method is-config="true" signature="startTestCase()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:03 IST" name="startTestCase" finished-at="2025-03-05T15:04:03 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="startTestCase()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:48:17 IST" name="startTestCase" finished-at="2025-03-05T15:48:17 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startTestCase -->
-        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:03 IST" name="beforeMethod" finished-at="2025-03-05T15:04:06 IST" duration-ms="3297" status="PASS">
+        <test-method is-config="true" signature="beforeMethod()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:48:17 IST" name="beforeMethod" finished-at="2025-03-05T15:48:28 IST" duration-ms="10781" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method signature="userHomePageCheck()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:06 IST" name="userHomePageCheck" finished-at="2025-03-05T15:04:23 IST" duration-ms="16886" status="PASS">
+        <test-method signature="landingPageValidation()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:48:28 IST" name="landingPageValidation" finished-at="2025-03-05T15:49:50 IST" duration-ms="82944" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- userHomePageCheck -->
-        <test-method is-config="true" signature="afterMethod()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:23 IST" name="afterMethod" finished-at="2025-03-05T15:04:24 IST" duration-ms="908" status="PASS">
+        </test-method> <!-- landingPageValidation -->
+        <test-method is-config="true" signature="afterMethod()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:49:50 IST" name="afterMethod" finished-at="2025-03-05T15:49:51 IST" duration-ms="241" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:24 IST" name="afterTest" finished-at="2025-03-05T15:04:24 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:49:51 IST" name="afterTest" finished-at="2025-03-05T15:49:51 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcases.TC05_UserHomePageCheck@765d7657]" started-at="2025-03-05T15:04:24 IST" name="afterSuite" finished-at="2025-03-05T15:04:25 IST" duration-ms="787" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:testcases.TC01_LandingPageCheck@28261e8e]" started-at="2025-03-05T15:49:51 IST" name="afterSuite" finished-at="2025-03-05T15:49:52 IST" duration-ms="752" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testcases.TC05_UserHomePageCheck -->
+      </class> <!-- testcases.TC01_LandingPageCheck -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -29,30 +31,48 @@ public class Reporter extends WebApplicationWrappers {
 
 	public static void reportStep(String desc, String tcstatus) {
 
-		long number = (long) Math.floor(Math.random() * 900000000L) + 10000000L;
+    	
+    	String screenshotBase64 = null;
+
         try {
-        	TakesScreenshot ts = (TakesScreenshot) driver;
-			FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE) , new File("./reports/images/"+number+".jpg"));
-		} catch (WebDriverException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        
-		
-		// Write if it is successful or failure or information
-		if(tcstatus.toUpperCase().equals("PASS")){
-			test.pass(desc,MediaEntityBuilder.createScreenCaptureFromPath("./../reports/images/"+number+".jpg").build());
-		}else if(tcstatus.toUpperCase().equals("FAIL")){
-			test.fail(desc,MediaEntityBuilder.createScreenCaptureFromPath("./../reports/images/"+number+".jpg").build());
-			throw new RuntimeException("FAILED");
-		}else if(tcstatus.toUpperCase().equals("INFO")){
-			test.log(Status.INFO, desc);
-		}
-	}
+            TakesScreenshot ts = (TakesScreenshot) driver;
+            File screenshot = ts.getScreenshotAs(OutputType.FILE);
+            byte[] fileContent = FileUtils.readFileToByteArray(screenshot);
+            screenshotBase64 = Base64.getEncoder().encodeToString(fileContent);
+        } catch (WebDriverException | IOException e) {
+            e.printStackTrace();
+        }
+
+        // Write if it is successful or failure or information
+        if (tcstatus.toUpperCase().equals("PASS")) {
+        	test.pass(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
+        	//test.pass(desc);
+        } else if (tcstatus.toUpperCase().equals("FAIL")) {
+            test.fail(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
+            throw new RuntimeException("FAILED");
+        } else if (tcstatus.toUpperCase().equals("INFO")) {
+            test.log(Status.INFO, desc);
+        } else if (tcstatus.toUpperCase().equals("SKIP")) {
+            test.skip(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
+        } else if (tcstatus.toUpperCase().equals("FAIL&RUN")) {
+            test.fail(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
+        } else if (tcstatus.toUpperCase().equals("WARNING")) {
+            test.log(Status.WARNING, desc);
+        }
+    }
 
 	
 	public static void startResult(){
+		
+		// Delete old reports and images
+        File reportDir = new File("./reports");
+        if (reportDir.exists()) {
+            try {
+                FileUtils.cleanDirectory(reportDir); // Delete all old files in the reports folder
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 		htmlReporter = new ExtentSparkReporter("./reports/Spark_"+time+".html");
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
