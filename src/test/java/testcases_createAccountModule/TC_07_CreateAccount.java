@@ -3,7 +3,7 @@ package testcases_createAccountModule;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pages.CreateAccountPage;
+import pages.SignUpPage;
 import pages.LandingPage;
 import pages.LoginPage;
 import wrappers.WebApplicationWrappers;
@@ -12,7 +12,7 @@ public class TC_07_CreateAccount extends WebApplicationWrappers{
 
 	LoginPage loginpage;
 	LandingPage LandingPage;
-	CreateAccountPage createacpage;
+	SignUpPage createacpage;
 	
 	
 	@BeforeClass
@@ -29,14 +29,14 @@ public class TC_07_CreateAccount extends WebApplicationWrappers{
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		LandingPage= new LandingPage(driver);
-		createacpage= new CreateAccountPage(driver);
+		createacpage= new SignUpPage(driver);
 		//without entering characters check confirm password field error message
 		LandingPage.clickSignUpButton();
 		createacpage.enterEmailId("ash@gmail.com");
 		createacpage.enterUserName("Ash");
 		createacpage.enterPassword("Welcome@123");
 		createacpage.enterConfirmPassword("Welcome@123");
-		createacpage.clickSubmitButton();
+		createacpage.clickSignUpButton();
 		createacpage.checkTCerrmsg();
 		
 		

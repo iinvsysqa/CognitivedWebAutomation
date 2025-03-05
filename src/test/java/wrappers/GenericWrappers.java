@@ -90,11 +90,12 @@ public class GenericWrappers {
 		boolean bReturn = false;
 		try {
 			driver.get(url);
-			Reporter.reportStep("The browser:" + url + " launched successfully", "PASS");
+			Thread.sleep(2000);
+			Reporter.reportStep("The browser: " + url + " launched successfully", "PASS");
 			bReturn = true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			Reporter.reportStep("The browser:" + url + " could not be launched", "FAIL");
+			Reporter.reportStep("The browser: " + url + " could not be launched", "FAIL");
 
 		}
 		return bReturn;
@@ -290,7 +291,7 @@ public class GenericWrappers {
 		jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
         try {
-            Thread.sleep(1000); // Adding a slight delay to allow the scroll to complete
+            Thread.sleep(2000); // Adding a slight delay to allow the scroll to complete
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

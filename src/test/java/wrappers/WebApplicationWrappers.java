@@ -23,7 +23,7 @@ public class WebApplicationWrappers extends GenericWrappers {
 	@BeforeSuite
 	public void beforeSuite() throws FileNotFoundException, IOException{
 		Reporter.startResult();
-		initDriver();
+//		initDriver();
 	}
 
 	@BeforeTest
@@ -34,7 +34,7 @@ public class WebApplicationWrappers extends GenericWrappers {
 	@BeforeMethod 
 	public void beforeMethod(){ 
 	Reporter.startTestCase();
-//	initDriver(); 
+	initDriver(); 
 	
 	}
 

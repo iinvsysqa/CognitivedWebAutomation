@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import wrappers.GenericWrappers;
 
-public class CreateAccountPage extends GenericWrappers {
+public class SignUpPage extends GenericWrappers {
 	
 		private WebDriver driver;
 	 // Locate all elements on the page
@@ -19,8 +19,9 @@ public class CreateAccountPage extends GenericWrappers {
 		@FindBy(xpath = "//input[@name='password']")
 		private WebElement passwordField;
 		
-		@FindBy(xpath = "//body/div[@id='root']/div[1]/div[3]/div[1]/div[2]/div[1]/div[5]/input[1]")
+		@FindBy(xpath = "//input[@name='confirm_password']")
 		private WebElement confirmPasswordField;
+		
 		
 		@FindBy(xpath = "//input[@name='term_and_condition']")
 		private WebElement tcField;
@@ -34,8 +35,8 @@ public class CreateAccountPage extends GenericWrappers {
 	    @FindBy(xpath = "//div[@text()='Terms and Conditions']")
 	    private WebElement tcLink;
 	    
-	    @FindBy(xpath = "//div[contains(text(),'Create Account')]")
-	    private WebElement CreateAccount;
+	    @FindBy(xpath = "//div[contains(text(),'Sign Up')]")
+	    private WebElement signUpBtn;
 	    
 	    @FindBy(xpath = "//label[contains(text(),'Email')]")
 	    private WebElement emailTxt;
@@ -113,8 +114,6 @@ public class CreateAccountPage extends GenericWrappers {
 	    @FindBy(xpath = "//*[@role='status']")
 		private WebElement ToastMessage;
 	    
-	    @FindBy(xpath = "//div[text()='Sign up']")
-	    private WebElement signUpButton;
 	    
 //	    @FindBy(xpath = "")
 //	    private WebElement CreateAccount;
@@ -127,7 +126,7 @@ public class CreateAccountPage extends GenericWrappers {
 	    
 	    // Constructor
 	    
-	    public CreateAccountPage(WebDriver driver) {
+	    public SignUpPage(WebDriver driver) {
 	    	
 	        this.driver=driver;
 	        PageFactory.initElements(driver, this);
@@ -191,14 +190,10 @@ public class CreateAccountPage extends GenericWrappers {
 		}
 
 		
-		public void clickSubmitButton() {
-			clickbyXpath(submitButton, " Submit Button ");
+		public void clickSignUpButton() {
+			clickbyXpath(signUpBtn, " Sign Up Button ");
 		}
 		
-		public void checkacnttxt() throws Exception {
-			verifyTextContainsByXpath(CreateAccount,"Create Account","Create account title");
-			
-		}
 		
 		public void checknametxt() throws Exception {
 			verifyTextContainsByXpath(nameTxt,"Name","Name header");
@@ -429,22 +424,18 @@ public class CreateAccountPage extends GenericWrappers {
 
 		public void backtocreateacnt() {
 
-			backnavigation(CreateAccount, "Create Account");
+			backnavigation(signUpBtn, "Sign Up");
 		}
 
-		public void CreateAccount() throws Exception {
+		public void signUpCheck() throws Exception {
 
-			clickbyXpath(signUpButton, " Sign Up ");
-			enterEmailId(randomnames(4) + "@gmail.com");
+			clickbyXpath(signUpBtn, " Sign Up ");
+			enterEmailId("iinvsysqa@gmail.com");
 			enterUserName(randomnames(4));
 			enterPassword("Welcome@123");
-			clickpasswordeyeicon();
 			enterConfirmPassword("Welcome@123");
-			clickConfrimPasswordeyeicon();
-			clickTCCheckbox();
-
-			clickSubmitButton();
+			clickSignUpButton();
 			Thread.sleep(1000);
-			checkToast("OTP has been sent to user registered Email-Id");
+			checkToast("Already Email is Registered");
 		}
 }

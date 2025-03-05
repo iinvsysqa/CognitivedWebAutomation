@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import pages.AssessmentPage;
 import pages.CourseContentPage;
-import pages.CreateAccountPage;
+import pages.SignUpPage;
 import pages.HomePage;
 import pages.LandingPage;
 import pages.LoginPage;
@@ -15,7 +15,7 @@ import wrappers.WebApplicationWrappers;
 public class TC_06_Course_Level_Assessment extends WebApplicationWrappers {
 	LoginPage loginpage;
 	HomePage homepage;
-	CreateAccountPage createacpage;
+	SignUpPage createacpage;
 	CourseContentPage coursecontentpage;
 	MyCoursePage mycoursepage;
 	AssessmentPage assessmentpage;
@@ -33,7 +33,7 @@ public class TC_06_Course_Level_Assessment extends WebApplicationWrappers {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		homepage= new HomePage(driver);
-		createacpage= new CreateAccountPage(driver);
+		createacpage= new SignUpPage(driver);
 		coursecontentpage= new CourseContentPage(driver);
 		mycoursepage=new MyCoursePage(driver);
 		assessmentpage=new AssessmentPage(driver);

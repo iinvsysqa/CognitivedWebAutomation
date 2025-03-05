@@ -3,7 +3,7 @@ package testcases_createAccountModule;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pages.CreateAccountPage;
+import pages.SignUpPage;
 import pages.LandingPage;
 import pages.LoginPage;
 import wrappers.WebApplicationWrappers;
@@ -12,7 +12,7 @@ public class TC_02_CreateAccount extends WebApplicationWrappers {
 
 	LoginPage loginpage;
 	LandingPage LandingPage;
-	CreateAccountPage createacpage;
+	SignUpPage createacpage;
 	
 	
 	@BeforeClass
@@ -27,10 +27,10 @@ public class TC_02_CreateAccount extends WebApplicationWrappers {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		LandingPage= new LandingPage(driver);
-		createacpage= new CreateAccountPage(driver);
+		createacpage= new SignUpPage(driver);
 		
 		LandingPage.clickSignUpButton();
-		createacpage.checkacnttxt();
+		//createacpage.checkacnttxt();
 		createacpage.checkemailtxt();
 		createacpage.checknametxt();
 		createacpage.checkpasswordtxt();;

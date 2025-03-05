@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import pages.CartPage;
 import pages.CourseContentPage;
-import pages.CreateAccountPage;
+import pages.SignUpPage;
 import pages.HomePage;
 import pages.LandingPage;
 import pages.LoginPage;

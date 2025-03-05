@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pages.CartPage;
-import pages.CreateAccountPage;
+import pages.SignUpPage;
 import pages.LandingPage;
 import pages.LoginPage;
 import pages.ProfilePage;
@@ -15,7 +15,7 @@ public class TC_04_SignInpage extends WebApplicationWrappers {
 
 	LoginPage loginpage;
 	LandingPage LandingPage;
-	CreateAccountPage createacpage;
+	SignUpPage createacpage;
 	ProfilePage profilepage;
 	CartPage cartPage;
 	SignInPage signinpage;
@@ -35,7 +35,7 @@ public class TC_04_SignInpage extends WebApplicationWrappers {
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		LandingPage= new LandingPage(driver);
-		createacpage= new CreateAccountPage(driver);
+		createacpage= new SignUpPage(driver);
 		profilepage=new ProfilePage(driver);
 		cartPage= new CartPage(driver);
 		signinpage= new SignInPage(driver);

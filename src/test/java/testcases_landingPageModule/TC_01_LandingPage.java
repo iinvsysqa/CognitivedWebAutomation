@@ -3,7 +3,7 @@ package testcases_landingPageModule;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pages.CreateAccountPage;
+import pages.SignUpPage;
 import pages.LandingPage;
 import pages.LoginPage;
 import wrappers.WebApplicationWrappers;
@@ -12,7 +12,7 @@ public class TC_01_LandingPage extends WebApplicationWrappers{
 
 	LoginPage loginpage;
 	LandingPage LandingPage;
-	CreateAccountPage createacpage;
+	SignUpPage createacpage;
 	
 	@BeforeClass
 	public void startTestCase() {
@@ -28,7 +28,7 @@ public class TC_01_LandingPage extends WebApplicationWrappers{
 		invokeApp("Chrome",loadProp().getProperty("URL"));
 		loginpage= new LoginPage(driver);
 		LandingPage= new LandingPage(driver);
-		createacpage= new CreateAccountPage(driver);
+		createacpage= new SignUpPage(driver);
        //clicking in explore course btn and navigating back to home page before signin
 		LandingPage.clickexplorecourse();
 		LandingPage.verifySigintitle();

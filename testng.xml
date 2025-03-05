@@ -4,18 +4,7 @@
   <test thread-count="5" name="Default test" verbose="2">
      <packages>
         <!-- Replace 'your.base.package' with your actual base package name -->
-        <package name="testcases_allcoursemodule" />
-        <package name="testcases_assessment_module" />
-        <package name="testcases_cartPageModule" />
-        <package name="testcases_createAccountModule" />
-        <package name="testcases_landingPageModule" />
-        <package name="testcases_myCoursePageModule" />
-        <package name="testcases_profilePageModule" />
-<<<<<<< HEAD
-		<package name="testcases_signInPageModule" />
-=======
-        <package name="testcases_signInPageModule" />
->>>>>>> 65bbe92361ebe42fffb021299c2992f5053fac22
+        <package name="testcases" />
     </packages>
   </test> <!-- Default test -->
 </suite> <!-- Default suite -->

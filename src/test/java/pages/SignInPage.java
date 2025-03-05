@@ -219,7 +219,7 @@ public class SignInPage extends WebApplicationWrappers {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
+		
 		verifyTextContainsByXpath(ToastMessage, "login successful","Toast message ");
 
 	}
