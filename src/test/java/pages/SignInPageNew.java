@@ -1,4 +1,6 @@
-package pages;
+	package pages;
+
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
@@ -135,7 +140,6 @@ public class SignInPageNew extends WebApplicationWrappers {
 public void signInUser(String email, String password) throws InterruptedException {
 
 		enterValuebyXpath(emailTxtBox, "To enter email on Emailfield", email);
-		clearfield(passwordTxtBox);
 		enterValuebyXpath(passwordTxtBox, "To enter password ", password);
 		clickbyXpath(signInBtn, "Sign In button");
 		Thread.sleep(2000);
@@ -190,12 +194,13 @@ public void signInUser(String email, String password) throws InterruptedExceptio
 		otpXpath(6).sendKeys("6");
 		
 		clickbyXpath(generateOTPBtn, "verified and proceed button");
-		
-		verifyTextContainsByXpath(ToastMessage, "Invalid OTP","Toast message");
-	
+		checkToast("Invalid OTP");
+			
 	}
 	public void checkToast(String toast) {
-
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@role='status']")));
 		verifyTextContainsByXpath(ToastMessage, toast,"Toast message ");
 	}
 }
