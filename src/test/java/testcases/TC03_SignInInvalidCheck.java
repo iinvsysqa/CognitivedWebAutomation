@@ -21,6 +21,7 @@ public class TC03_SignInInvalidCheck extends WebApplicationWrappers {
 	@Test
 	public void forgetPasswordPageandOTPPageCheck() throws InterruptedException {
 		
+		initDriver("Windows","chrome");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		launchApplication(loadProp().getProperty("URL"));	

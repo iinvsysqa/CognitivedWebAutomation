@@ -8,6 +8,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 import java.util.Random;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +21,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import utils.Reporter;
@@ -48,12 +52,54 @@ public class GenericWrappers {
 		return prop;
 	}
 
-	public static WebDriver initDriver() {
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		return driver;
-	}
+	public static WebDriver initDriver(String platform, String browserName) {
+        // Check platform and initialize browser accordingly
+        if (platform.equalsIgnoreCase("Windows")) {
+            // For Windows platform, we can use Chrome, Firefox, and Edge
+            switch (browserName.toLowerCase()) {
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                    break;
+                case "edge":
+                    WebDriverManager.edgedriver().setup();
+                    driver = new EdgeDriver();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Browser not supported on Windows: " + browserName);
+            }
+        } else if (platform.equalsIgnoreCase("macos") || platform.equalsIgnoreCase("mac")) {
+            // For macOS, we can use Chrome, Firefox, Safari
+            switch (browserName.toLowerCase()) {
+                case "chrome":
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                    break;
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                    break;
+                case "safari":
+                    // Safari only works on macOS
+                    driver = new SafariDriver();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Browser not supported on macOS: " + browserName);
+            }
+        } else {
+            throw new IllegalArgumentException("Unsupported platform: " + platform);
+        }
+
+        if (driver != null) {
+            driver.manage().window().maximize(); // Maximize the window on initialization
+        }
+
+        return driver;
+    }
 
 	public boolean invokeApp(String browser, String url) {
 		boolean bReturn = false;
@@ -582,5 +628,36 @@ public class GenericWrappers {
     	
     	Reporter.reportStep(message, "FAIL");
     }
+
+    public boolean isUserOnNextPage(WebDriver driver, String element, String Pname) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+            Reporter.reportStep("User navigated to Correct Page : "+Pname, "PASS");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     
+    public boolean verifyDynamicContentByXpath(String xpath, String text, String field) {
+    	
+		boolean bReturn = false;
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			String sText = driver.findElement(By.xpath(xpath)).getText();
+			if (sText.trim().contains(text)) {
+				Reporter.reportStep(field +"contains "+ text , "PASS");
+				bReturn = true;
+				}
+			else {
+				Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bReturn;
+	}
 }

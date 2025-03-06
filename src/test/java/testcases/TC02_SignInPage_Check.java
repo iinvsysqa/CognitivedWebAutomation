@@ -24,6 +24,7 @@ public class TC02_SignInPage_Check extends WebApplicationWrappers {
 	@Test
 	public void signInPageCheck() throws InterruptedException {
 		
+		initDriver("Windows","chrome");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);

@@ -23,6 +23,7 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 	@Test
 	public void userHomePageCheck() throws InterruptedException {
 		
+		initDriver("Windows","firefox");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);
@@ -30,6 +31,7 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 		
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
+		userhomepage.checkUserInUserHomePage();
 		userhomepage.clickExploreBtn();
 		userhomepage.clickCourseTopicCheck();
 		Thread.sleep(2000);

@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import pages.LandingPageNew;
+import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC01_LandingPageCheck extends WebApplicationWrappers {
@@ -19,9 +20,11 @@ public class TC01_LandingPageCheck extends WebApplicationWrappers {
 
 	@Test
 	public void landingPageValidation() throws InterruptedException {
-		
+
+		initDriver("Windows","edge");
+		Reporter.reportStep("Browser : Edge ","INFO");
+		Reporter.reportStep("Platform : Windows ","INFO");
 		launchApplication(loadProp().getProperty("URL"));
-		
 		landingpagenew= new LandingPageNew(driver);
 		
 		landingpagenew.clickgetStartedButton();

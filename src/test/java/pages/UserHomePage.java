@@ -43,9 +43,13 @@ public class UserHomePage extends GenericWrappers {
 	}
 
 	public void clickExploreBtn() {
-
 		clickbyXpath(exploreBtn, " Explore button ");
 	}
+	public void checkUserInUserHomePage() {
+		
+		isUserOnNextPage(driver,"//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']", "User Home Page");
+	}
+	
 	public void clickProfileBtn() {
 		scrollToElements(profileBtn);
 		clickbyXpath(profileBtn, " Profile Button ");

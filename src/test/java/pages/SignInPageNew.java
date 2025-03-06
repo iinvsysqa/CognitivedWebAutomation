@@ -198,9 +198,6 @@ public void signInUser(String email, String password) throws InterruptedExceptio
 			
 	}
 	public void checkToast(String toast) {
-		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//*[@role='status']")));
-		verifyTextContainsByXpath(ToastMessage, toast,"Toast message ");
+		verifyDynamicContentByXpath("//*[@role='status']", toast,"Toast message ");
 	}
 }
