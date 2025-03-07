@@ -645,7 +645,7 @@ public class GenericWrappers {
     	
 		boolean bReturn = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 			String sText = driver.findElement(By.xpath(xpath)).getText();
 			if (sText.trim().contains(text)) {

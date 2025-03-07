@@ -24,7 +24,7 @@ public class TC04_SignUpCheck extends WebApplicationWrappers {
 	@Test
 	public void signUpPageCheck() throws Exception {
 		
-		initDriver("Windows","firefox");
+		initDriver("Windows","chrome");
 		launchApplication(loadProp().getProperty("URL"));
 		
 		landingpagenew= new LandingPageNew(driver);

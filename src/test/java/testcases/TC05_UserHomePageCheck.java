@@ -23,7 +23,7 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 	@Test
 	public void userHomePageCheck() throws InterruptedException {
 		
-		initDriver("Windows","firefox");
+		initDriver("Windows","chrome");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);
