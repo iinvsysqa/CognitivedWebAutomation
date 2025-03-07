@@ -32,6 +32,7 @@ public class TC02_SignInPage_Check extends WebApplicationWrappers {
 		
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.checkvalidemailandpasswordfield("iinvsysqa@gmail.com", "Welcome@123");
+		userhomepage.checkUserInUserHomePage();
 		userhomepage.clickProfileBtn();
 		userhomepage.clickLogOutBtn(); 
 	}
