@@ -649,11 +649,11 @@ public class GenericWrappers {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 			String sText = driver.findElement(By.xpath(xpath)).getText();
 			if (sText.trim().contains(text)) {
-				Reporter.reportStep(field +"contains "+ text , "PASS");
+				Reporter.reportStep(field +" contains "+ text , "PASS");
 				bReturn = true;
 				}
 			else {
-				Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
+				//Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

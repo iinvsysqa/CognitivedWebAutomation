@@ -161,12 +161,11 @@ public void signInUser(String email, String password) throws InterruptedExceptio
 		enterValuebyXpath(emailTxtBox, "Forget password email field", randomnames(4)+"@gmail.com");
 		clickbyXpath(generateOTPBtn, "Generate OTP button ");
 		checkToast("Email Id does not exist");
-		Thread.sleep(4000);
+		Thread.sleep(5000);
 		clearfield(emailTxtBox);
 		enterValuebyXpath(emailTxtBox, "Forget password email field", "iinvsysqa@gmail.com");
 		clickbyXpath(generateOTPBtn, "Generate OTP button ");
-		Thread.sleep(3000);
-		checkToast("OTP has been sent to user registered Email");	  
+		checkToast("OTP has been sent to user registered Email");
 
 	}
 	
@@ -180,6 +179,7 @@ public void signInUser(String email, String password) throws InterruptedExceptio
 		clickbyXpath(editEmailLink, " Edit Email Field ");
 		clearfield(emailTxtBox);
 		enterValuebyXpath(emailTxtBox, "Forget password email field", "iinvsysqa@gmail.com");
+		Thread.sleep(5000);
 		clickbyXpath(generateOTPBtn, "Generate OTP button ");
 		
 		// check title of OTP verification page
@@ -198,6 +198,6 @@ public void signInUser(String email, String password) throws InterruptedExceptio
 			
 	}
 	public void checkToast(String toast) {
-		verifyDynamicContentByXpath("//*[@role='status']", toast,"Toast message ");
+		verifyDynamicContentByXpath("//*[@role='status']", toast," Toast message ");
 	}
 }
