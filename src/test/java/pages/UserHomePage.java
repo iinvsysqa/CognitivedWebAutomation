@@ -19,7 +19,7 @@ public class UserHomePage extends GenericWrappers {
 	@FindBy(xpath = "//div[text()='All Courses']")
 	private WebElement allCourseButton;
 
-	@FindBy(xpath = "//button[@class='add-cart-btn']")
+	@FindBy(xpath = "//div[@class='add-cart-btn']")
 	private WebElement addCartBtn;
 
 	@FindBy(xpath = "(//div[@class='topic-title-container-field-wrapup'])[1]/div[2]")
@@ -27,6 +27,13 @@ public class UserHomePage extends GenericWrappers {
 
 	@FindBy(xpath = "//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']")
 	private WebElement profileBtn;
+	
+	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button'])[1]")
+	private WebElement course1ExploreBtn;
+	
+	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button'])[2]")
+	private WebElement course2ExploreBtn;
+	
 
 	@FindBy(xpath = "//div[@class='logout-button']/div")
 	private WebElement logOutBtn;
@@ -45,6 +52,19 @@ public class UserHomePage extends GenericWrappers {
 	public void clickExploreBtn() {
 		clickbyXpath(exploreBtn, " Explore button ");
 	}
+	
+	public void clickAddtoCartBtn() {
+		clickbyXpath(addCartBtn, " Add to Cart Button  ");
+	}
+	
+	public void clickCourse1ExploreBtn() {
+		clickbyXpath(course1ExploreBtn, " Explore button ");
+	}
+	
+	public void clickCourse2ExploreBtn() {
+		clickbyXpath(course2ExploreBtn, " Explore button ");
+	}
+	
 	public void checkUserInUserHomePage() {
 		
 		isUserOnNextPage(driver,"//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']", "User Home Page");

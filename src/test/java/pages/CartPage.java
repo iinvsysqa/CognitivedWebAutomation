@@ -77,14 +77,57 @@ public class CartPage extends WebApplicationWrappers {
 	@FindBy(xpath = "//div[contains(@class,'All_Courses_select_Grade_Text__yAteO')]")
 	private WebElement Selectsubject;
 
-	@FindBy(xpath = "//div[contains(@class,'Cart_Screen_buyNow_Button_Text__')]")
-	private WebElement Buynowbtn;
+	@FindBy(xpath = "//div[text()='Buy Now']")
+	private WebElement buyNowBtn;
 
 	@FindBy(xpath = "//div[contains(@class,'Cart_Screen_cart_Title__')]")
 	private WebElement PaymentOption;
 
 	@FindBy(xpath = "//button[contains(@class,'Paypal_Payment_cancelButton__')]")
 	private WebElement paymentCancelbtn;
+
+	@FindBy(xpath = "//a[text()='Home']")
+	private WebElement homeBtn;
+
+	@FindBy(xpath = "//div[@class='billing-card-total-number-of-courses-right']/p")
+	private WebElement totalPriceField;
+	
+	@FindBy(xpath = "(//*[@class='course-cart-price-styling-remove'])[1]")
+	private WebElement cartItemRemoveBtn;
+	
+	@FindBy(xpath = "//p[text()='No Courses in the Cart']")
+	private WebElement noCourseInCartTxt;
+	
+	
+
+	public void clickAddtoCartBtn() {
+		clickbyXpath(buyNowBtn, " Buy now button  ");
+	}
+
+	public void clickHomeBtn() {
+		clickbyXpath(homeBtn, " Home button  ");
+	}
+
+	public void checkUserInCartPage() {
+
+		isUserOnNextPage(driver, "//div[text()='Buy Now']", " Cart Page ");
+	}
+
+	public void checkPriceInCart(String price) {
+		verifyTextContainsByXpath(totalPriceField, price," Total price ");
+	}
+
+	public void checkItemremoveToast(String toast) {
+		verifyDynamicContentByXpath("//*[@role='status']", toast," Toast message ");
+	}
+	
+	public void clickCartItemRemoveBtn() {
+		clickbyXpath(cartItemRemoveBtn, " Cart Item Remove  ");
+	}
+	public void CheckNoCourseInCartTxt() {
+		verifyTextContainsByXpath(noCourseInCartTxt, "No Courses in the Cart", " Empty Cart");
+	}
+
 
 	public void verifyaddedcoursesandcountofcarticonwithcartpage() {
 
@@ -280,7 +323,7 @@ public class CartPage extends WebApplicationWrappers {
 
 		jsExecutor.executeScript("window.scrollTo(0, 0);");
 		Thread.sleep(2000);
-		scrollToElementAndClick(Buynowbtn);
+		scrollToElementAndClick(buyNowBtn);
 		verifyTextContainsByXpath(PaymentOption, "Payment Option", "Payment Option");
 		clickbyXpath(paymentCancelbtn, "Payment cancel button");
 		verifyTextContainsByXpath(cartname, attribute, "Cart Name");
@@ -317,7 +360,7 @@ public class CartPage extends WebApplicationWrappers {
 			try {
 				if (cartIconcount.isDisplayed()) {
 					cartcount = cartIconcount.getText();
-			
+
 					System.out.println(cartcount);
 				} else {
 					System.out.println("Cart icon is no longer displayed.");
@@ -341,7 +384,7 @@ public class CartPage extends WebApplicationWrappers {
 				wait.until(ExpectedConditions.stalenessOf(cartItem));
 
 			} catch (Exception e) {
-				fail("Failed to click on the remove button for item: "+cartItem);
+				fail("Failed to click on the remove button for item: " + cartItem);
 				System.out.println("Failed to click on the remove button for item: ");
 				e.printStackTrace();
 				return;
