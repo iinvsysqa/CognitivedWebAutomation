@@ -50,21 +50,6 @@ public class TC_01_cartPage extends WebApplicationWrappers {
 		LandingPage.enetrpasswordsignin(password);
 		loginpage.clickSubmitButton();
 		
-		cartPage.verifyaddedcoursesandcountofcarticonwithcartpage();
-		
-		//verify subtotal values with courses value 
-		//Add subtotal values and verify  total 
-		cartPage.verifysubtotalwithcoursepriceandchecktotal();
-		
-		
-		//verify clicking on courses taking to coursecontent page or not
-		cartPage.verifycoursecontentpage();
-		
-		
-		//verify payment screen 
-		cartPage.verifypaymentscreen();
-		//click on remove and check the courses decreasing or not 
-		 cartPage.verifyremovebtn_placeholder_carticon();
 		 
 	}
 }

@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.LandingPageNew;
 import pages.SignInPageNew;
 import pages.SignUpPage;
+import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC04_SignUpCheck extends WebApplicationWrappers {
@@ -24,7 +25,9 @@ public class TC04_SignUpCheck extends WebApplicationWrappers {
 	@Test
 	public void signUpPageCheck() throws Exception {
 		
-		initDriver("Windows","firefox");
+		initDriver("Windows","chrome");
+		Reporter.reportStep("Browser : Chrome ","USER_INFO");
+		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		launchApplication(loadProp().getProperty("URL"));
 		
 		landingpagenew= new LandingPageNew(driver);

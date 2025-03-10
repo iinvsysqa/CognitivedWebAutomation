@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 
 import pages.LandingPageNew;
 import pages.SignInPageNew;
+import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC03_SignInInvalidCheck extends WebApplicationWrappers {
@@ -21,9 +22,11 @@ public class TC03_SignInInvalidCheck extends WebApplicationWrappers {
 	@Test
 	public void forgetPasswordPageandOTPPageCheck() throws InterruptedException {
 		
-		initDriver("Windows","chrome");
+		initDriver("Windows","firefox");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
+		Reporter.reportStep("Browser : Firefox ","USER_INFO");
+		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		launchApplication(loadProp().getProperty("URL"));	
 		
 		landingpagenew.clickgetStartedButton();

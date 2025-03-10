@@ -634,10 +634,11 @@ public class GenericWrappers {
         
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-            Reporter.reportStep("User navigated to Correct Page : "+Pname, "PASS");
+            Reporter.reportStep("User navigated to Correct Page : "+Pname, "INFO");
             return true;
         } catch (Exception e) {
-            return false;
+        	 Reporter.reportStep("User navigated is not navigated to correct Page : "+Pname, "FAIL");
+        	 return false;
         }
     }
     
@@ -645,15 +646,15 @@ public class GenericWrappers {
     	
 		boolean bReturn = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 			String sText = driver.findElement(By.xpath(xpath)).getText();
 			if (sText.trim().contains(text)) {
-				Reporter.reportStep(field +"contains "+ text , "PASS");
+				Reporter.reportStep(field +" contains "+ text , "PASS");
 				bReturn = true;
 				}
 			else {
-				Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
+				//Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

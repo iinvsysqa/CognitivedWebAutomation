@@ -3,21 +3,22 @@ package testcases;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import pages.CartPage;
 import pages.LandingPageNew;
 import pages.SignInPageNew;
 import pages.UserHomePage;
 import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
-public class TC05_UserHomePageCheck extends WebApplicationWrappers {
+public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 	SignInPageNew signInPagenew;
 	LandingPageNew landingpagenew;
 	UserHomePage userhomepage;
-	
+	CartPage cartpage;
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC05 - User Home Page functional Check ";
-		testDescription = " Login with Valid User and Check Home and Course details Page ";
+		testCaseName = " TC06 - Add and Remove course to cart";
+		testDescription = " Add course and remove courses to Cart ";
 	}
 
 
@@ -30,17 +31,27 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);
+		cartpage= new CartPage(driver);
 		launchApplication(loadProp().getProperty("URL"));	
 		
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		userhomepage.checkUserInUserHomePage();
-		userhomepage.clickExploreBtn();
-		userhomepage.clickCourseTopicCheck();
-		Thread.sleep(2000);
+		userhomepage.clickCourse1ExploreBtn();
+		userhomepage.clickAddtoCartBtn();
+		Thread.sleep(1000);
+		userhomepage.clickAddtoCartBtn();
+		cartpage.checkUserInCartPage();
+		cartpage.checkPriceInCart("159920");
+		cartpage.clickBuyNowBtn();
+		cartpage.clickProceedPayBtn();
+		cartpage.paymentPageCheck("9750509150");
+		cartpage.checkUserInPaymentPage();
+		cartpage.clickcartButton();
+		cartpage.clickCartItemRemoveBtn();
+		cartpage.CheckNoCourseInCartTxt();
 		userhomepage.clickProfileBtn();
 		userhomepage.clickLogOutBtn(); 
-		
-		
 	}
 }
+
