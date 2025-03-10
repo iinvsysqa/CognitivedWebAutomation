@@ -45,14 +45,16 @@ public class Reporter extends WebApplicationWrappers {
 
         // Write if it is successful or failure or information
         if (tcstatus.toUpperCase().equals("PASS")) {
-        	test.pass(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
-        	//test.pass(desc);
+//       	test.pass(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
+        	test.pass(desc);
         } else if (tcstatus.toUpperCase().equals("FAIL")) {
             test.fail(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
             throw new RuntimeException("FAILED");
         } else if (tcstatus.toUpperCase().equals("INFO")) {
-            test.log(Status.INFO, desc);
-        } else if (tcstatus.toUpperCase().equals("SKIP")) {
+            test.log(Status.INFO,desc,MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
+        } else if (tcstatus.toUpperCase().equals("USER_INFO")) {
+            test.log(Status.INFO,desc);
+        }else if (tcstatus.toUpperCase().equals("SKIP")) {
             test.skip(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());
         } else if (tcstatus.toUpperCase().equals("FAIL&RUN")) {
             test.fail(desc, MediaEntityBuilder.createScreenCaptureFromBase64String(screenshotBase64).build());

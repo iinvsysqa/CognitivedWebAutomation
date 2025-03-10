@@ -22,8 +22,8 @@ public class TC01_LandingPageCheck extends WebApplicationWrappers {
 	public void landingPageValidation() throws InterruptedException {
 
 		initDriver("Windows","edge");
-		Reporter.reportStep("Browser : Edge ","INFO");
-		Reporter.reportStep("Platform : Windows ","INFO");
+		Reporter.reportStep("Browser : Edge ","USER_INFO");
+		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		launchApplication(loadProp().getProperty("URL"));
 		landingpagenew= new LandingPageNew(driver);
 		

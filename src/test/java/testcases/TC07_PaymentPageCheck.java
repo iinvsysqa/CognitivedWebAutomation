@@ -7,6 +7,7 @@ import pages.CartPage;
 import pages.LandingPageNew;
 import pages.SignInPageNew;
 import pages.UserHomePage;
+import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC07_PaymentPageCheck extends WebApplicationWrappers {
@@ -25,6 +26,8 @@ public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 	public void userHomePageCheck() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
+		Reporter.reportStep("Browser : Chrome ","USER_INFO");
+		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);

@@ -7,6 +7,7 @@ import pages.LandingPageNew;
 import pages.SignInPage;
 import pages.SignInPageNew;
 import pages.UserHomePage;
+import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC02_SignInPage_Check extends WebApplicationWrappers {
@@ -25,6 +26,8 @@ public class TC02_SignInPage_Check extends WebApplicationWrappers {
 	public void signInPageCheck() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
+		Reporter.reportStep("Browser : Chrome ","USER_INFO");
+		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);

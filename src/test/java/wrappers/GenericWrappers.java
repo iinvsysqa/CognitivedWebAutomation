@@ -634,10 +634,11 @@ public class GenericWrappers {
         
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-            Reporter.reportStep("User navigated to Correct Page : "+Pname, "PASS");
+            Reporter.reportStep("User navigated to Correct Page : "+Pname, "INFO");
             return true;
         } catch (Exception e) {
-            return false;
+        	 Reporter.reportStep("User navigated is not navigated to correct Page : "+Pname, "FAIL");
+        	 return false;
         }
     }
     

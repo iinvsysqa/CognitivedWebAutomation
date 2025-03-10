@@ -7,6 +7,7 @@ import pages.CartPage;
 import pages.LandingPageNew;
 import pages.SignInPageNew;
 import pages.UserHomePage;
+import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC06_AddCoursesToCart extends WebApplicationWrappers {
@@ -24,7 +25,9 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 	@Test
 	public void userHomePageCheck() throws InterruptedException {
 		
-		initDriver("Windows","chrome");
+		initDriver("Windows","firefox");
+		Reporter.reportStep("Browser : Firfox ","USER_INFO");
+		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
 		userhomepage= new UserHomePage(driver);
