@@ -5,13 +5,13 @@
 	<groupId>com</groupId>
 	<artifactId>WebApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<properties> <!-- Default properties for the Java version -->
-			<maven.compiler.source>1.8</maven.compiler.source>
-			<maven.compiler.target>1.8</maven.compiler.target>
-			<maven.compiler.encoding>UTF-8</maven.compiler.encoding> 
-			<!--Encoding for source files -->
-			
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<!--Encoding for source files -->
+
 	</properties>
 
 	<dependencies>
@@ -56,6 +56,13 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.24.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv -->
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>java-dotenv</artifactId>
+			<version>5.2.2</version>
 		</dependency>
 
 		<dependency>
