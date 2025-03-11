@@ -17,13 +17,13 @@ public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 	CartPage cartpage;
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC06 - Add and Remove course to cart";
-		testDescription = " Add course and remove courses to Cart ";
+		testCaseName = " TC07 - Payment Page check";
+		testDescription = " Check user able to process Payment Page ";
 	}
 
 
 	@Test
-	public void userHomePageCheck() throws InterruptedException {
+	public void paymentCheck() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");
