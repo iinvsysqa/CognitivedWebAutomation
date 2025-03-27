@@ -45,7 +45,7 @@ public class TC_06_Topic_N_Chapter_Completion_Check extends WebApplicationWrappe
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
-		homepage.clickMyCourseButton();
+		//homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
 		coursecontentpage.clickPlayVideo();
 		Thread.sleep(3000);

@@ -45,7 +45,7 @@ public class TC_04_Video_Completion_Check extends WebApplicationWrappers {
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
-		homepage.clickMyCourseButton();
+		//homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
 		Thread.sleep(3000);
 		coursecontentpage.clickChapterTitle("2");

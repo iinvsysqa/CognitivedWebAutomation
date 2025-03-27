@@ -5,14 +5,16 @@ import org.testng.annotations.Test;
 
 import pages.LandingPageNew;
 import pages.SignInPageNew;
-import pages.UserHomePage;
+import pages.CoursesPage;
+import pages.HomePage;
 import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 	SignInPageNew signInPagenew;
 	LandingPageNew landingpagenew;
-	UserHomePage userhomepage;
+	CoursesPage coursepage;
+	HomePage homepage;
 	
 	@BeforeClass
 	public void startTestCase() {
@@ -29,17 +31,21 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
-		userhomepage= new UserHomePage(driver);
+		coursepage= new CoursesPage(driver);
+		homepage= new HomePage(driver);
+		
 		launchApplication(loadProp().getProperty("URL"));	
 		
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
-		userhomepage.checkUserInUserHomePage();
-		userhomepage.clickExploreBtn();
-		userhomepage.clickCourseTopicCheck();
+		homepage.checkUserInUserHomePage();
+		homepage.clickExploreCourseButton();
+		coursepage.checkUserInUserCoursesPage();
+		coursepage.clickExploreBtn();
+		coursepage.clickCourseTopicCheck();
 		Thread.sleep(2000);
-		userhomepage.clickProfileBtn();
-		userhomepage.clickLogOutBtn(); 
+		coursepage.clickProfileBtn();
+		coursepage.clickLogOutBtn(); 
 		
 		
 	}

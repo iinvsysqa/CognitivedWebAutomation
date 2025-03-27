@@ -48,7 +48,7 @@ public class TC_03_Course_Content_Page extends WebApplicationWrappers {
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@124");
 		loginpage.clickSubmitButton();
-		homepage.clickMyCourseButton();
+		//homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
 	
 		coursecontentpage.checkvideosCount("5");

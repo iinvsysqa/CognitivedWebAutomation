@@ -6,19 +6,22 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.LandingPageNew;
 import pages.SignInPageNew;
-import pages.UserHomePage;
+import pages.CoursesPage;
+import pages.HomePage;
 import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 	SignInPageNew signInPagenew;
 	LandingPageNew landingpagenew;
-	UserHomePage userhomepage;
+	CoursesPage userhomepage;
 	CartPage cartpage;
+	HomePage homepage;
+	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC06 - Add and Remove course to cart";
-		testDescription = " Add course and remove courses to Cart ";
+		testCaseName = " TC07 - Payment Process check";
+		testDescription = " Check user able to progress to Payment page and cancel Payment ";
 	}
 
 
@@ -30,13 +33,18 @@ public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
-		userhomepage= new UserHomePage(driver);
+		userhomepage= new CoursesPage(driver);
 		cartpage= new CartPage(driver);
+		homepage=new HomePage(driver);
+		
 		launchApplication(loadProp().getProperty("URL"));	
 		
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
-		userhomepage.checkUserInUserHomePage();
+		homepage.checkUserInUserHomePage();
+		homepage.clickExploreCourseButton();
+		
+		userhomepage.checkUserInUserCoursesPage();
 		userhomepage.clickCourse1ExploreBtn();
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);

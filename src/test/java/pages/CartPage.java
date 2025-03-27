@@ -44,8 +44,12 @@ public class CartPage extends WebApplicationWrappers {
 	@FindBy(xpath = "//button[contains(@class,'Paypal_Payment_cancelButton__')]")
 	private WebElement paymentCancelbtn;
 
-	@FindBy(xpath = "//a[text()='Home']")
+	@FindBy(xpath = "//div[@class='home-page-header-menu-container-words']/a[1]")
 	private WebElement homeBtn;
+	
+	@FindBy(xpath = "//div[@class='home-page-header-menu-container-words']/a[3]")
+	private WebElement coursesBtn;
+	
 
 	@FindBy(xpath = "//div[@class='billing-card-total-number-of-courses-right']/p")
 	private WebElement totalPriceField;
@@ -95,6 +99,10 @@ public class CartPage extends WebApplicationWrappers {
 	}
 	public void clickHomeBtn() {
 		clickbyXpath(homeBtn, " Home button  ");
+	}
+	
+	public void clickCoursesButton() {
+		clickbyXpath(coursesBtn, " Courses Button ");
 	}
 
 	public void checkUserInCartPage() {

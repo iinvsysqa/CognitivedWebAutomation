@@ -45,7 +45,7 @@ public class TC_05_Chapter_N_Topic_Assessment extends WebApplicationWrappers {
 		loginpage.enterEmailId("testuser6@gmail.com");
 		loginpage.enterPassword("Welcome@123");
 		loginpage.clickSubmitButton();
-		homepage.clickMyCourseButton();
+		//homepage.clickMyCourseButton();
 		mycoursepage.clickGotoCourseButton(1);
 		Thread.sleep(3000);
 		coursecontentpage.clickTopicAssessmentButton();

@@ -15,7 +15,7 @@ public class LandingPageNew extends GenericWrappers{
     
  // Locate all elements on the page
     
-    @FindBy(xpath = "//div[@class='get-started-button']")
+    @FindBy(xpath = "//div[@class='get-started-button hide-mobile-tab']")
     private WebElement getStartedButton;
     
     @FindBy(xpath = "//div[@class='get-started-container-button']")
@@ -33,8 +33,11 @@ public class LandingPageNew extends GenericWrappers{
     @FindBy(xpath = "//h3[contains(text(),'Tailored Resources')]")
     private WebElement tailoredResourcesTopic;
     
+    @FindBy(xpath = "//div[@class='logo-container ']/div[1]/div[1]")
+    private WebElement loginBtn;
     
-  
+    @FindBy(xpath = "//div[@class='logo-container ']/div[1]/div[2]")
+    private WebElement signUpBtn;
     
     
     public LandingPageNew(WebDriver driver) {
@@ -73,5 +76,13 @@ public class LandingPageNew extends GenericWrappers{
     	Reporter.reportStep(" Move to Next Testimonial Successfully ", "PASS");
     }
     
+    public void clickLoginButton() {
+    	clickbyXpath(loginBtn, "Landing Page Sign in Button ");
+    }
 
+    public void clickSignupButton() {
+    	clickbyXpath(signUpBtn, "Landing Page Sign in Button ");
+    }
+
+    
 }

@@ -7,42 +7,58 @@ import org.openqa.selenium.support.PageFactory;
 
 import wrappers.GenericWrappers;
 
-public class HomePage extends GenericWrappers{
+public class HomePage extends GenericWrappers {
 
-    private WebDriver driver;
-    
- // Locate all elements on the page
-    
-    @FindBy(xpath = "//div[text()='My Courses']")
-    private WebElement myCourseButton;
-    
-    @FindBy(xpath = "//div[text()='All Courses']")
-    private WebElement allCourseButton;
-    
-    @FindBy(xpath = "//div[text()='Sign up']")
-    private WebElement signUpButton;
-    
-    
-    
-    
-    public HomePage(WebDriver driver) {
-        this.driver=driver;
-        PageFactory.initElements(driver, this);
-    }
-    
-    // Methods to interact with elements
-    public void clickMyCourseButton() {
-    	
-    	clickbyXpath(myCourseButton," My Course ");
-    }
-    
- public void clickAllCourseButton() {
-    	
-    	clickbyXpath(allCourseButton," All Course ");
-    }
-    
-    public void clickSignUpButton() {
-    	clickbyXpath(signUpButton, " Sign Up " );
-    }
+	private WebDriver driver;
+
+	// Locate all elements on the page
+
+	@FindBy(xpath = "//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']")
+	private WebElement profileBtn;
+
+	@FindBy(xpath = "//*[@class='home-page-header-menu-container-words']/a[1]")
+	private WebElement homeButton;
+
+	@FindBy(xpath = "//div[@class='logout-button-out']/div[1]")
+	private WebElement logOutBtn;
+
+	@FindBy(xpath = "//div[@class='get-started-button']")
+	private WebElement exploreCourseBtn;
+
+	public HomePage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+
+	// Methods to interact with elements
+
+	public void checkUserInUserHomePage() {
+
+		isUserOnNextPage(driver, "//*[@class='home-page-header-menu-container-words']/a[1]", "User Home Page");
+	}
+
+	public void clickProfileBtn() {
+		clickbyXpath(profileBtn, " Profile Button ");
+	}
+
+	public void clickLogOutBtn() {
+		clickbyXpath(logOutBtn, " Logout Button ");
+
+	}
+
+	public void clickExploreCourseButton() {
+
+		clickbyXpath(exploreCourseBtn, " Get Started ");
+	}
+
+	public void clickMyCourseButton() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void clickAllCourseButton() {
+		// TODO Auto-generated method stub
+
+	}
 
 }

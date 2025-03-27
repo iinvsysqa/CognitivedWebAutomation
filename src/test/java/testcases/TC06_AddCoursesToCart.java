@@ -6,15 +6,18 @@ import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.LandingPageNew;
 import pages.SignInPageNew;
-import pages.UserHomePage;
+import pages.CoursesPage;
+import pages.HomePage;
 import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
 public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 	SignInPageNew signInPagenew;
 	LandingPageNew landingpagenew;
-	UserHomePage userhomepage;
+	CoursesPage userhomepage;
 	CartPage cartpage;
+	HomePage homepage;
+	
 	@BeforeClass
 	public void startTestCase() {
 		testCaseName = " TC06 - Add and Remove course to cart";
@@ -30,19 +33,25 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
 		signInPagenew=new SignInPageNew(driver);
-		userhomepage= new UserHomePage(driver);
+		userhomepage= new CoursesPage(driver);
+		homepage=new HomePage(driver);
+		
 		cartpage= new CartPage(driver);
 		launchApplication(loadProp().getProperty("URL"));	
 		
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
-		userhomepage.checkUserInUserHomePage();
+		homepage.checkUserInUserHomePage();
+		homepage.clickExploreCourseButton();
+		Thread.sleep(3000);
+		userhomepage.checkUserInUserCoursesPage();
 		userhomepage.clickCourse1ExploreBtn();
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);
 		userhomepage.clickAddtoCartBtn();
 		cartpage.checkUserInCartPage();
-		cartpage.clickHomeBtn();
+		cartpage.clickCoursesButton();
+		Thread.sleep(3000);
 		userhomepage.clickCourse2ExploreBtn();
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);

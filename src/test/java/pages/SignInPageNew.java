@@ -31,6 +31,9 @@ public class SignInPageNew extends WebApplicationWrappers {
 	@FindBy(xpath = "//div[contains(text(),'Sign In')]")
 	private WebElement signInBtn;
 
+	@FindBy(xpath = "//*[@class='signin-in-screen-signInText']")
+	private WebElement signInPageTopic;
+	
 	@FindBy(xpath = "//input[@name='user_email']")
 	private WebElement emailTxtBox;
 
@@ -199,5 +202,9 @@ public void signInUser(String email, String password) throws InterruptedExceptio
 	}
 	public void checkToast(String toast) {
 		verifyDynamicContentByXpath("//*[@role='status']", toast," Toast message ");
+	}
+	
+	public void checkSignInPageTopic(String topicName) {
+		verifyTextContainsByXpath(signInPageTopic, topicName, " Login Page title");
 	}
 }

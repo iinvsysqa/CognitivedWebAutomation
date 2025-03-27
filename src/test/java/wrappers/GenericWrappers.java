@@ -152,7 +152,7 @@ public class GenericWrappers {
 		try {
 			expWait(xpath);
 			xpath.click();
-			Reporter.reportStep(fieldName + " field is clicked Successfully.", "PASS");
+			Reporter.reportStep(fieldName + " button is clicked Successfully.", "PASS");
 			bReturn = true;
 
 	} catch (Exception e) {
@@ -334,6 +334,7 @@ public class GenericWrappers {
 	}
 	
 	protected void scrollToElements(WebElement element) {
+		expWait(element);
 		jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
         try {

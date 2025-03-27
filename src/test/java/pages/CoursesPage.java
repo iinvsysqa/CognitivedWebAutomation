@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import wrappers.GenericWrappers;
 
-public class UserHomePage extends GenericWrappers {
+public class CoursesPage extends GenericWrappers {
 
 	private WebDriver driver;
 
@@ -15,7 +15,6 @@ public class UserHomePage extends GenericWrappers {
 
 	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button'])[1]")
 	private WebElement exploreBtn;
-
 	@FindBy(xpath = "//div[text()='All Courses']")
 	private WebElement allCourseButton;
 
@@ -28,23 +27,24 @@ public class UserHomePage extends GenericWrappers {
 	@FindBy(xpath = "//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']")
 	private WebElement profileBtn;
 	
-	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button'])[1]")
+	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button-container'])[1]/div")
 	private WebElement course1ExploreBtn;
 	
-	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button'])[2]")
+	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button-container'])[2]/div")
 	private WebElement course2ExploreBtn;
 	
 
-	@FindBy(xpath = "//div[@class='logout-button']/div")
+	@FindBy(xpath = "//div[@class='logout-button-out']/div[1]")
 	private WebElement logOutBtn;
 
-	public UserHomePage(WebDriver driver) {
+	public CoursesPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
 	// Methods to interact with elements
 	public void clickCourseTopicCheck() {
+		driver.navigate().refresh();
 		scrollToElements(courseTopicCheck);
 		clickbyXpath(courseTopicCheck, " Course Topic Check ");
 	}
@@ -54,6 +54,7 @@ public class UserHomePage extends GenericWrappers {
 	}
 	
 	public void clickAddtoCartBtn() {
+		driver.navigate().refresh();
 		clickbyXpath(addCartBtn, " Add to Cart Button  ");
 	}
 	
@@ -65,9 +66,9 @@ public class UserHomePage extends GenericWrappers {
 		clickbyXpath(course2ExploreBtn, " Explore button ");
 	}
 	
-	public void checkUserInUserHomePage() {
+	public void checkUserInUserCoursesPage() {
 		
-		isUserOnNextPage(driver,"//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']", "User Home Page");
+		isUserOnNextPage(driver,"//*[@class='home-page-header-menu-container-words']/a[1]", "User Home Page");
 	}
 	
 	public void clickProfileBtn() {
