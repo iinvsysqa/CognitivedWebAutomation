@@ -26,7 +26,7 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 
 
 	@Test
-	public void userHomePageCheck() throws InterruptedException {
+	public void addCoursesToCart() throws InterruptedException {
 		
 		initDriver("Windows","firefox");
 		Reporter.reportStep("Browser : Firfox ","USER_INFO");

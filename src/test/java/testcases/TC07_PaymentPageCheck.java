@@ -20,13 +20,15 @@ public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
+
 		testCaseName = " TC07 - Payment Process check";
 		testDescription = " Check user able to progress to Payment page and cancel Payment ";
+
 	}
 
 
 	@Test
-	public void userHomePageCheck() throws InterruptedException {
+	public void paymentCheck() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");
