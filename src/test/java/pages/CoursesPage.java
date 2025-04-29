@@ -27,10 +27,10 @@ public class CoursesPage extends GenericWrappers {
 	@FindBy(xpath = "//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']")
 	private WebElement profileBtn;
 	
-	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button-container'])[1]/div")
+	@FindBy(xpath = "//div[@class='individual-course-card-container-video-details-button-container']/div[1]")
 	private WebElement course1ExploreBtn;
 	
-	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button-container'])[2]/div")
+	@FindBy(xpath = "//div[@class='individual-course-card-container-video-details-button-container']/div[1]")
 	private WebElement course2ExploreBtn;
 	
 
@@ -55,6 +55,10 @@ public class CoursesPage extends GenericWrappers {
 	
 	public void clickAddtoCartBtn() {
 		driver.navigate().refresh();
+		clickbyXpath(addCartBtn, " Add to Cart Button  ");
+	}
+	
+	public void clickAddtoCartBtn2() {
 		clickbyXpath(addCartBtn, " Add to Cart Button  ");
 	}
 	

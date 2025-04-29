@@ -35,7 +35,7 @@ public class TC08_HomePageCheckAfterLogin extends WebApplicationWrappers {
 		signInPagenew= new SignInPageNew(driver);
 		
 		landingpagenew.clickLoginButton();
-		signInPagenew.checkSignInPageTopic("Sign in");
+		signInPagenew.checkSignInPageTopic("Sign In");
 		Thread.sleep(3000);
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		homepage.checkUserInUserHomePage();
