@@ -30,7 +30,7 @@ public class CoursesPage extends GenericWrappers {
 	@FindBy(xpath = "//div[@class='individual-course-card-container-video-details-button-container']/div[1]")
 	private WebElement course1ExploreBtn;
 	
-	@FindBy(xpath = "//div[@class='individual-course-card-container-video-details-button-container']/div[1]")
+	@FindBy(xpath = "(//*[text()='Explore'])[1]")
 	private WebElement course2ExploreBtn;
 	
 

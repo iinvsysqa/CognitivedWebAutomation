@@ -53,6 +53,7 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 		cartpage.clickCoursesButton();
 		Thread.sleep(3000);
 		userhomepage.clickCourse2ExploreBtn();
+		Thread.sleep(2000);
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);
 		userhomepage.clickAddtoCartBtn2();
