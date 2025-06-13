@@ -28,7 +28,7 @@ public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 
 
 	@Test
-	public void paymentCheck() throws InterruptedException {
+	public void TC07_Payment_Progress_Check() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");

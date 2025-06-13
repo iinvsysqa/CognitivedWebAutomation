@@ -21,7 +21,7 @@ public class TC01_LandingPageCheck extends WebApplicationWrappers {
 
 
 	@Test(retryAnalyzer = utils.RetryListener.class)
-	public void landingPageValidation() throws InterruptedException {
+	public void TC01_Landing_Page_Check() throws InterruptedException {
 		initDriver("Windows","edge");
 		Reporter.reportStep("Browser : Edge ","USER_INFO");
 		Reporter.reportStep("Platform : Windows ","USER_INFO");

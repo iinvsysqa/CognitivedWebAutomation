@@ -23,7 +23,7 @@ public class TC04_SignUpCheck extends WebApplicationWrappers {
 
 
 	@Test
-	public void signUpPageCheck() throws Exception {
+	public void TC04_SignUp_Check() throws Exception {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");

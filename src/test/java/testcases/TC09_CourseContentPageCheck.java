@@ -28,7 +28,7 @@ public class TC09_CourseContentPageCheck extends WebApplicationWrappers {
 
 
 	@Test
-	public void userHomePageCheck() throws InterruptedException {
+	public void TC09_Course_Content_Page_Check () throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");

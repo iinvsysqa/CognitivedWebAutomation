@@ -25,7 +25,7 @@ public class TC08_HomePageCheckAfterLogin extends WebApplicationWrappers {
 
 
 	@Test
-	public void landingPageValidation() throws InterruptedException {
+	public void TC08_HomePage_Check_After_Login() throws InterruptedException {
 		initDriver("Windows","edge");
 		Reporter.reportStep("Browser : Edge ","USER_INFO");
 		Reporter.reportStep("Platform : Windows ","USER_INFO");

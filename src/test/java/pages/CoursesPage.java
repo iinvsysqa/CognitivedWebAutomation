@@ -34,6 +34,14 @@ public class CoursesPage extends GenericWrappers {
 	@FindBy(xpath = "(//*[text()='Explore'])[1]")
 	private WebElement course2ExploreBtn;
 	
+	@FindBy(xpath = "(//*[text()='Explore'])[2]")
+	private WebElement course3ExploreBtn;
+	
+	@FindBy(xpath = "(//div[@class='arrow right-arrow'])[1]")
+	private WebElement exploreCourseArrowBtn;
+	
+	
+	
 
 	@FindBy(xpath = "//div[@class='logout-button-out']/div[1]")
 	private WebElement logOutBtn;
@@ -68,7 +76,19 @@ public class CoursesPage extends GenericWrappers {
 	}
 	
 	public void clickCourse2ExploreBtn() {
-		clickbyXpath(course2ExploreBtn, " Explore button ");
+		try {
+			String pointerEvents = course2ExploreBtn.getCssValue("pointer-events");
+			if (pointerEvents.equals("auto")) {
+				clickbyXpath(course2ExploreBtn, " Explore button ");
+			}
+			else {
+				clickbyXpath(exploreCourseArrowBtn, " Arrow Button ");
+				clickbyXpath(course3ExploreBtn, " Explore Button on Course 3 Button");
+			}
+		}catch (Exception e) {
+				// TODO: handle exception
+			}
+		
 	}
 	
 	public void checkUserInUserCoursesPage() {

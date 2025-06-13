@@ -12,7 +12,7 @@ import pages.HomePage;
 import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
-public class TC02_SignInPage_Check extends WebApplicationWrappers {
+public class TC02_SignInPageCheck extends WebApplicationWrappers {
 	SignInPageNew signInPagenew;
 	LandingPageNew landingpagenew;
 	CoursesPage coursesPage;
@@ -25,7 +25,7 @@ public class TC02_SignInPage_Check extends WebApplicationWrappers {
 	}
 
 	@Test
-	public void signInPageCheck() throws InterruptedException {
+	public void TC02_SignInPage_Check() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");

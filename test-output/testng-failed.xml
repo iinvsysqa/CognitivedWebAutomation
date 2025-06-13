@@ -5,7 +5,7 @@
     <classes>
       <class name="testcases.TC06_AddCoursesToCart">
         <methods>
-          <include name="addCoursesToCart"/>
+          <include name="TC06_AddCourses_To_Cart_Check"/>
           <include name="beforeMethod"/>
           <include name="beforeSuite"/>
           <include name="beforeTest"/>

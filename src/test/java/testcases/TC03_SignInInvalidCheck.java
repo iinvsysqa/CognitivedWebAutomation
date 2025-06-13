@@ -20,7 +20,7 @@ public class TC03_SignInInvalidCheck extends WebApplicationWrappers {
 
 
 	@Test
-	public void forgetPasswordPageandOTPPageCheck() throws InterruptedException {
+	public void TC03_SignIn_Invalid_Check () throws InterruptedException {
 		
 		initDriver("Windows","firefox");
 		landingpagenew= new LandingPageNew(driver);
