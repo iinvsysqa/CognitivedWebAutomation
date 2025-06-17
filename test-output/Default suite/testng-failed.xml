@@ -3,18 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testcases.TC06_AddCoursesToCart">
+      <class name="testcases.TC01_LandingPageCheck">
         <methods>
-          <include name="TC06_AddCourses_To_Cart_Check"/>
           <include name="beforeMethod"/>
           <include name="beforeSuite"/>
+          <include name="startTestCase"/>
+          <include name="TC01_Landing_Page_Check"/>
           <include name="beforeTest"/>
           <include name="afterMethod"/>
-          <include name="startTestCase"/>
           <include name="afterSuite"/>
           <include name="afterTest"/>
         </methods>
-      </class> <!-- testcases.TC06_AddCoursesToCart -->
+      </class> <!-- testcases.TC01_LandingPageCheck -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

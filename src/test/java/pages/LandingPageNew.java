@@ -65,8 +65,10 @@ public class LandingPageNew extends GenericWrappers{
     	clickbyXpath(demoCourseVideo, " Demo video Pause " );
     	Thread.sleep(2000);
     	clickbyXpath(demoCourseVideo, " Demo video Play " );
+    	Reporter.reportStep("Video Player started time Screenshot", "INFO");
     	Thread.sleep(5000);
     	clickbyXpath(demoCourseVideo, " Demo video Pause " );
+    	Reporter.reportStep("Video Player after 5 seconds Screenshot", "INFO");
     }
     
     public void checkTestimonialScroll() throws InterruptedException {
