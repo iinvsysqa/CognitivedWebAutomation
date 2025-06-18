@@ -662,4 +662,71 @@ public class GenericWrappers {
 		}
 		return bReturn;
 	}
+    
+    public boolean verifyVideoPlayingByPlayPause(WebElement videoElement, String videotype) {
+    	Boolean bReturn=false;
+    	try {
+            // Locate the video element
+            //WebElement videoElement = driver.findElement(By.cssSelector("div.semi-circle-img video"));
+    		scrollToElements(videoElement);
+            // Create a JavascriptExecutor instance
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+
+            // Get the initial playback time
+            Double initialTime = (Double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+
+            // Wait for a short period (e.g., 5 seconds)
+            Thread.sleep(5000);
+
+            // Get the playback time after the wait
+            Double finalTime = (Double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+
+            // Verify the playback status by comparing the times
+            if (finalTime > initialTime) {
+            	 Reporter.reportStep("Progressed from " + initialTime + " s to " + finalTime + " s.", "PASS");
+                
+                bReturn = true;
+            } else {
+                System.out.println("FAILURE: The video is not playing; its playback time did not progress.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
+        }
+		return bReturn;
+    }
+    
+    public boolean checkVideoIsplaying(WebElement videoElement, String videotype) {
+   	 boolean bReturn = false;
+   	 try {
+            // Locate the video element using a suitable selector
+         //   WebElement videoElement = driver.findElement(By.cssSelector("div.semi-circle-img video"));
+   		
+            scrollToElements(videoElement);
+            // Create a JavascriptExecutor instance
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+
+            // Execute JavaScript to check the 'paused' and 'ended' properties
+            
+            Boolean isVideoPlaying = (Boolean) jsExecutor.executeScript(
+                    "return arguments[0].paused === false && arguments[0].ended === false && arguments[0].readyState > 2 && arguments[0].error === null;",
+                    videoElement
+                );
+
+            // Verify the playback status
+            if (isVideoPlaying) {
+                Reporter.reportStep("The "+videotype+" is currently playing", "PASS");
+                bReturn = true;
+            } else {
+           	 Reporter.reportStep("The "+videotype+" is currently not playing", "FAIL");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+   	 return bReturn;
+   }
+
 }

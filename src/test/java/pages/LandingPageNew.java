@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -39,6 +40,18 @@ public class LandingPageNew extends GenericWrappers{
     @FindBy(xpath = "//div[@class='logo-container ']/div[1]/div[2]")
     private WebElement signUpBtn;
     
+    @FindBy(xpath = "//*[@class='background-video']")
+    private WebElement backGroundVideo;
+    
+    @FindBy(xpath = "//*[@class='semi-circle-img video']")
+    private WebElement semicircleVideo; 
+    
+    @FindBy(xpath = " //*[@class='video-player-view']")
+    private WebElement landingPageSampleVideo; 
+    
+ 
+    
+ 
     
     public LandingPageNew(WebDriver driver) {
         this.driver=driver;
@@ -86,5 +99,18 @@ public class LandingPageNew extends GenericWrappers{
     	clickbyXpath(signUpBtn, "Landing Page Sign in Button ");
     }
 
+    public boolean checkSemiCircleVideoPlaying(String videotype) {
+    	return checkVideoIsplaying(semicircleVideo,videotype);
+    }
+    
+    public boolean checkBackGroundVideoPlaying(String videotype) {
+    	return checkVideoIsplaying(backGroundVideo,videotype);
+    }
+    
+    public boolean checkLandingPageDemoVideoPlaying(String videotype) {
+    	return verifyVideoPlayingByPlayPause(demoCourseVideo, videotype);
+    }
+    
+  
     
 }
