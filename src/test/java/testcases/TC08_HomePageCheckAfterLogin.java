@@ -25,7 +25,7 @@ public class TC08_HomePageCheckAfterLogin extends WebApplicationWrappers {
 
 
 	@Test
-	public void landingPageValidation() throws InterruptedException {
+	public void TC08_HomePage_Check_After_Login() throws InterruptedException {
 		initDriver("Windows","edge");
 		Reporter.reportStep("Browser : Edge ","USER_INFO");
 		Reporter.reportStep("Platform : Windows ","USER_INFO");
@@ -35,7 +35,7 @@ public class TC08_HomePageCheckAfterLogin extends WebApplicationWrappers {
 		signInPagenew= new SignInPageNew(driver);
 		
 		landingpagenew.clickLoginButton();
-		signInPagenew.checkSignInPageTopic("Sign in");
+		signInPagenew.checkSignInPageTopic("Sign In");
 		Thread.sleep(3000);
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		homepage.checkUserInUserHomePage();

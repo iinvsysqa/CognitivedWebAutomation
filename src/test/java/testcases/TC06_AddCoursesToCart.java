@@ -26,9 +26,9 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 
 
 	@Test
-	public void addCoursesToCart() throws InterruptedException {
+	public void TC06_AddCourses_To_Cart_Check() throws InterruptedException {
 		
-		initDriver("Windows","firefox");
+		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Firfox ","USER_INFO");
 		Reporter.reportStep("Platform : Windows ","USER_INFO");
 		landingpagenew= new LandingPageNew(driver);
@@ -43,19 +43,20 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		homepage.checkUserInUserHomePage();
 		homepage.clickExploreCourseButton();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		userhomepage.checkUserInUserCoursesPage();
 		userhomepage.clickCourse1ExploreBtn();
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);
-		userhomepage.clickAddtoCartBtn();
+		userhomepage.clickAddtoCartBtn2();
 		cartpage.checkUserInCartPage();
 		cartpage.clickCoursesButton();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		userhomepage.clickCourse2ExploreBtn();
+		Thread.sleep(2000);
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);
-		userhomepage.clickAddtoCartBtn();
+		userhomepage.clickAddtoCartBtn2();
 		cartpage.checkUserInCartPage();
 		cartpage.checkPriceInCart("204920");
 		cartpage.clickCartItemRemoveBtn();

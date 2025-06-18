@@ -15,6 +15,7 @@ public class CoursesPage extends GenericWrappers {
 
 	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button'])[1]")
 	private WebElement exploreBtn;
+	
 	@FindBy(xpath = "//div[text()='All Courses']")
 	private WebElement allCourseButton;
 
@@ -27,11 +28,19 @@ public class CoursesPage extends GenericWrappers {
 	@FindBy(xpath = "//div[@class='home-page-header-menu-container-svg-circle home-page-header-menu-container-words-hideable profile-icon-container']")
 	private WebElement profileBtn;
 	
-	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button-container'])[1]/div")
+	@FindBy(xpath = "//div[@class='individual-course-card-container-video-details-button-container']/div[1]")
 	private WebElement course1ExploreBtn;
 	
-	@FindBy(xpath = "(//div[@class='individual-course-card-container-video-details-button-container'])[2]/div")
+	@FindBy(xpath = "(//*[text()='Explore'])[1]")
 	private WebElement course2ExploreBtn;
+	
+	@FindBy(xpath = "(//*[text()='Explore'])[2]")
+	private WebElement course3ExploreBtn;
+	
+	@FindBy(xpath = "(//div[@class='arrow right-arrow'])[1]")
+	private WebElement exploreCourseArrowBtn;
+	
+	
 	
 
 	@FindBy(xpath = "//div[@class='logout-button-out']/div[1]")
@@ -58,12 +67,28 @@ public class CoursesPage extends GenericWrappers {
 		clickbyXpath(addCartBtn, " Add to Cart Button  ");
 	}
 	
+	public void clickAddtoCartBtn2() {
+		clickbyXpath(addCartBtn, " Add to Cart Button  ");
+	}
+	
 	public void clickCourse1ExploreBtn() {
 		clickbyXpath(course1ExploreBtn, " Explore button ");
 	}
 	
 	public void clickCourse2ExploreBtn() {
-		clickbyXpath(course2ExploreBtn, " Explore button ");
+		try {
+			String pointerEvents = course2ExploreBtn.getCssValue("pointer-events");
+			if (pointerEvents.equals("auto")) {
+				clickbyXpath(course2ExploreBtn, " Explore button ");
+			}
+			else {
+				clickbyXpath(exploreCourseArrowBtn, " Arrow Button ");
+				clickbyXpath(course3ExploreBtn, " Explore Button on Course 3 Button");
+			}
+		}catch (Exception e) {
+				// TODO: handle exception
+			}
+		
 	}
 	
 	public void checkUserInUserCoursesPage() {

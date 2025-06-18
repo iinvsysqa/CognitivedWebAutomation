@@ -24,7 +24,7 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 
 
 	@Test
-	public void userHomePageCheck() throws InterruptedException {
+	public void TC05_UserHome_Page_Check() throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");
@@ -40,6 +40,7 @@ public class TC05_UserHomePageCheck extends WebApplicationWrappers {
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		homepage.checkUserInUserHomePage();
 		homepage.clickExploreCourseButton();
+		Thread.sleep(5000);
 		coursepage.checkUserInUserCoursesPage();
 		coursepage.clickExploreBtn();
 		coursepage.clickCourseTopicCheck();
