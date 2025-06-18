@@ -13,7 +13,7 @@ public class LandingPageNew extends GenericWrappers{
     
     private WebDriver driver;
     
- // Locate all elements on the page
+ //Locate all elements on the page
     
     @FindBy(xpath = "//div[@class='get-started-button hide-mobile-tab']")
     private WebElement getStartedButton;
