@@ -46,11 +46,15 @@ public class LandingPageNew extends GenericWrappers{
     @FindBy(xpath = "//*[@class='semi-circle-img video']")
     private WebElement semicircleVideo; 
     
-    @FindBy(xpath = " //*[@class='video-player-view']")
+   // @FindBy(xpath = " //*[@class='video-player-view']")
+   // private WebElement landingPageSampleVideo; 
+    
+    
+    @FindBy(xpath = "//*[text()='Designed to meet individual needs']/following-sibling::div/div[1]")
     private WebElement landingPageSampleVideo; 
     
- 
-    
+   // @FindBy(xpath = "(//video)[3]")
+  //  private WebElement landingPageSampleVideo; 
  
     
     public LandingPageNew(WebDriver driver) {
@@ -108,7 +112,7 @@ public class LandingPageNew extends GenericWrappers{
     }
     
     public boolean checkLandingPageDemoVideoPlaying(String videotype) {
-    	return verifyVideoPlayingByPlayPause(demoCourseVideo, videotype);
+    	return verifyVideoPlayingByPlayPause(driver.findElement(By.xpath("//*[@class='vjs-tech']")), videotype);
     }
     
   

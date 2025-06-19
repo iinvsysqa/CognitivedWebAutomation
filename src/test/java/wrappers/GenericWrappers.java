@@ -667,34 +667,34 @@ public class GenericWrappers {
     	Boolean bReturn=false;
     	try {
             // Locate the video element
-            //WebElement videoElement = driver.findElement(By.cssSelector("div.semi-circle-img video"));
     		scrollToElements(videoElement);
-            // Create a JavascriptExecutor instance
+           
             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-            // Get the initial playback time
-            Double initialTime = (Double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+            // Get the initial playback time by casting to Number first
+            Number initialTimeNumber = (Number) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+            Reporter.reportStep(" Video Starting time screenshot", "INFO");
+            double initialTime = initialTimeNumber.doubleValue();
 
-            // Wait for a short period (e.g., 5 seconds)
+            // Wait for a short period (e.g., 2 seconds)
             Thread.sleep(5000);
-
-            // Get the playback time after the wait
-            Double finalTime = (Double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
-
+            Reporter.reportStep(" Video Ending time screenshot", "INFO");
+            // Get the playback time after the wait by casting to Number first
+            Number finalTimeNumber = (Number) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+            double finalTime = finalTimeNumber.doubleValue();
+            
             // Verify the playback status by comparing the times
             if (finalTime > initialTime) {
-            	 Reporter.reportStep("Progressed from " + initialTime + " s to " + finalTime + " s.", "PASS");
+            	 Reporter.reportStep("Video is Playing and Progressed from " + initialTime + " s to " + finalTime + " s.", "PASS");
                 
                 bReturn = true;
             } else {
-                System.out.println("FAILURE: The video is not playing; its playback time did not progress.");
+            	Reporter.reportStep("The video is not playing; It's playback time did not progress.","FAIL");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            driver.quit();
-        }
+        } 
 		return bReturn;
     }
     

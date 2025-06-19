@@ -13,13 +13,14 @@ import pages.SignInPageNew;
 import utils.Reporter;
 import wrappers.WebApplicationWrappers;
 
-public class TC09_CourseContentPageCheck extends WebApplicationWrappers {
+public class TC10_VideoCheck extends WebApplicationWrappers {
 	SignInPageNew signInPagenew;
 	LandingPageNew landingpagenew;
 	CoursesPage coursespage;
 	CartPage cartpage;
 	HomePage homepage;
 	CourseContentPageNew coursecontentpage;
+	CoursesPage coursepage;
 	boolean bReturn;
 	
 	@BeforeClass
@@ -30,7 +31,7 @@ public class TC09_CourseContentPageCheck extends WebApplicationWrappers {
 
 
 	@Test
-	public void TC09_Course_Content_Page_Check () throws InterruptedException {
+	public void TC10_Video_Play_Check () throws InterruptedException {
 		
 		initDriver("Windows","chrome");
 		Reporter.reportStep("Browser : Chrome ","USER_INFO");
@@ -40,10 +41,20 @@ public class TC09_CourseContentPageCheck extends WebApplicationWrappers {
 		coursespage= new CoursesPage(driver);
 		cartpage= new CartPage(driver);
 		homepage=new HomePage(driver);
+		coursepage= new CoursesPage(driver);
 		coursecontentpage= new CourseContentPageNew(driver);
 		
 		launchApplication(loadProp().getProperty("URL"));	
-		
+		landingpagenew.clickgetStartedButton();
+		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
+		homepage.checkUserInUserHomePage();
+		homepage.clickExploreCourseButton();
+		Thread.sleep(3000);
+		coursespage.clickCourse1ExploreBtn();
+		bReturn=coursecontentpage.checkCoursePageDemoVideoPlaying(" Course Demo Video ");
+		Thread.sleep(2000);
+		coursepage.clickProfileBtn();
+		coursepage.clickLogOutBtn(); 
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("dharanidharan099@gmail.com","Welcome@12345");
 		homepage.checkUserInUserHomePage();
@@ -54,7 +65,6 @@ public class TC09_CourseContentPageCheck extends WebApplicationWrappers {
 		coursecontentpage.clickFirstTopicVideo();
 		//coursecontentpage.playPauseVideo();
 		bReturn=coursecontentpage.checkCourseVideoPlaying(" Course Video ");
-		Assert.assertTrue(bReturn, "One or more steps failed — check the logs.");
-	}
+		Assert.assertTrue(bReturn, "One or more steps failed — check the reports.");
 }
-
+}

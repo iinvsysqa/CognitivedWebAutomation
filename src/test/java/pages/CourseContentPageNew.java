@@ -28,7 +28,10 @@ public class CourseContentPageNew extends GenericWrappers{
     
     @FindBy(xpath = "//div[@class='video_container']/div[4]/div[1]//*[@class='videoActive']")
     private WebElement demoCourseVideo;
-	
+
+    @FindBy(xpath = "//div[@class='video_container']/div[1]/video")
+    private WebElement CourseVideo;
+  
 	@FindBy(xpath = "(//div[contains(@class,'Course_Content_topic_Assests_Content_View_After_Buy')])[1]")
 	private WebElement playVideoButton;
 	
@@ -98,4 +101,13 @@ public class CourseContentPageNew extends GenericWrappers{
 	    	Thread.sleep(5000);
 	    	clickbyXpath(demoCourseVideo, " Topic video Pause " );
 	    }
+	 
+	 public boolean checkCourseVideoPlaying(String videotype) {
+	    	return verifyVideoPlayingByPlayPause(CourseVideo, videotype);
+	    }
+	 
+	 public boolean checkCoursePageDemoVideoPlaying(String videotype) {
+	    	return verifyVideoPlayingByPlayPause(CourseVideo, videotype);
+	    }
+	    
 }

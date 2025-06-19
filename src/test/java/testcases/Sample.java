@@ -18,7 +18,7 @@ public class Sample extends WebApplicationWrappers {
 	}
 
 
-	@Test(retryAnalyzer = utils.RetryListener.class)
+	//@Test(retryAnalyzer = utils.RetryListener.class)
 	public void TC01_Landing_Page_Check() throws InterruptedException {
 		initDriver("Windows","edge");
 		Reporter.reportStep("Browser : Edge ","USER_INFO");
@@ -32,7 +32,8 @@ public class Sample extends WebApplicationWrappers {
 		 * driver.navigate().back(); landingpagenew.playPauseVideo();
 		 */
 		
-		landingpagenew.checkSemiCircleVideoPlaying(" Semi Circle Video ");
+		//landingpagenew.checkSemiCircleVideoPlaying(" Semi Circle Video ");
+		landingpagenew.checkLandingPageDemoVideoPlaying(" Demo Video ");
 	//	landingpagenew.checkBackGroundVideoPlaying(" Background Video ");
 	//	landingpagenew.checkTestimonialScroll();
 		

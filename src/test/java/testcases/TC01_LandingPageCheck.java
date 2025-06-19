@@ -34,12 +34,11 @@ public class TC01_LandingPageCheck extends WebApplicationWrappers {
 		Thread.sleep(3000);
 		landingpagenew.clickgetStartedNowButton();
 		driver.navigate().back();
-		landingpagenew.playPauseVideo();
+		//landingpagenew.playPauseVideo();
 		bReturn = landingpagenew.checkSemiCircleVideoPlaying(" Semi Circle Video ");
 		bReturn = landingpagenew.checkBackGroundVideoPlaying(" Background Video ");
 
-		// bReturn= landingpagenew.checkLandingPageDemoVideoPlaying(" Landing Page Demo
-		// Video ");
+		//bReturn= landingpagenew.checkLandingPageDemoVideoPlaying(" Landing Page Demo Video ");
 		
 		landingpagenew.checkTestimonialScroll();
 		Assert.assertTrue(bReturn, "One or more steps failed — check the logs.");
