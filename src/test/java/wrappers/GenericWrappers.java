@@ -705,6 +705,7 @@ public class GenericWrappers {
          //   WebElement videoElement = driver.findElement(By.cssSelector("div.semi-circle-img video"));
    		
             scrollToElements(videoElement);
+            Thread.sleep(5000);
             // Create a JavascriptExecutor instance
             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
@@ -728,5 +729,38 @@ public class GenericWrappers {
         }
    	 return bReturn;
    }
+    
+    public boolean checkVideoIsplayingNew(WebElement videoElement, String videoType) {
+    	 try {
+    		 scrollToElements(videoElement);
+             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+
+             // Get the video's INTERNAL currentTime. This exists even if no timer is visible.
+             double initialTime = (double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+
+             // Wait a short moment to allow the autoplaying video to advance.
+             Thread.sleep(2000);
+
+             // Get the currentTime again after the pause.
+             double finalTime = (double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+
+             // The only reliable proof of playback is if the time has advanced.
+             if (finalTime > initialTime) {
+                 Reporter.reportStep("The " + videoType + " background video is currently playing.", "PASS");
+                 System.out.println("SUCCESS: The " + videoType + " is playing. (Time advanced from " + initialTime + "s to " + finalTime + "s)");
+                 return true;
+             } else {
+                 Reporter.reportStep("The " + videoType + " background video is NOT playing. Its time did not advance.", "FAIL");
+                 System.out.println("FAILURE: The " + videoType + " is not playing. (Time stuck at " + initialTime + "s)");
+                 return false;
+             }
+
+         } catch (Exception e) {
+             e.printStackTrace();
+             Reporter.reportStep("An exception occurred while verifying video playback: " + e.getMessage(), "FAIL");
+             return false;
+         }
+
+    }
 
 }

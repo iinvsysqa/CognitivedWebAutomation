@@ -43,7 +43,7 @@ public class LandingPageNew extends GenericWrappers{
     @FindBy(xpath = "//*[@class='background-video']")
     private WebElement backGroundVideo;
     
-    @FindBy(xpath = "//*[@class='semi-circle-img video']")
+    @FindBy(xpath = "//*[@class='semi-circle-img video']/video")
     private WebElement semicircleVideo; 
     
    // @FindBy(xpath = " //*[@class='video-player-view']")
@@ -104,11 +104,11 @@ public class LandingPageNew extends GenericWrappers{
     }
 
     public boolean checkSemiCircleVideoPlaying(String videotype) {
-    	return checkVideoIsplaying(semicircleVideo,videotype);
+    	return checkVideoIsplayingNew(semicircleVideo,videotype);
     }
     
     public boolean checkBackGroundVideoPlaying(String videotype) {
-    	return checkVideoIsplaying(backGroundVideo,videotype);
+    	return checkVideoIsplayingNew(backGroundVideo,videotype);
     }
     
     public boolean checkLandingPageDemoVideoPlaying(String videotype) {
