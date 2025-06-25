@@ -36,7 +36,7 @@ public class GenericWrappers {
 	public String sUrl, primaryWindowHandle, sHubUrl, sHubPort, attribute;
 	public JavascriptExecutor jsExecutor;
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
-	
+
 	public Properties loadProp() {
 		Properties prop = new Properties();
 		try {
@@ -53,53 +53,53 @@ public class GenericWrappers {
 	}
 
 	public static WebDriver initDriver(String platform, String browserName) {
-        // Check platform and initialize browser accordingly
-        if (platform.equalsIgnoreCase("Windows")) {
-            // For Windows platform, we can use Chrome, Firefox, and Edge
-            switch (browserName.toLowerCase()) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                case "edge":
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Browser not supported on Windows: " + browserName);
-            }
-        } else if (platform.equalsIgnoreCase("macos") || platform.equalsIgnoreCase("mac")) {
-            // For macOS, we can use Chrome, Firefox, Safari
-            switch (browserName.toLowerCase()) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                case "safari":
-                    // Safari only works on macOS
-                    driver = new SafariDriver();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Browser not supported on macOS: " + browserName);
-            }
-        } else {
-            throw new IllegalArgumentException("Unsupported platform: " + platform);
-        }
+		// Check platform and initialize browser accordingly
+		if (platform.equalsIgnoreCase("Windows")) {
+			// For Windows platform, we can use Chrome, Firefox, and Edge
+			switch (browserName.toLowerCase()) {
+			case "chrome":
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
+				break;
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
+				break;
+			case "edge":
+				WebDriverManager.edgedriver().setup();
+				driver = new EdgeDriver();
+				break;
+			default:
+				throw new IllegalArgumentException("Browser not supported on Windows: " + browserName);
+			}
+		} else if (platform.equalsIgnoreCase("macos") || platform.equalsIgnoreCase("mac")) {
+			// For macOS, we can use Chrome, Firefox, Safari
+			switch (browserName.toLowerCase()) {
+			case "chrome":
+				WebDriverManager.chromedriver().setup();
+				driver = new ChromeDriver();
+				break;
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				driver = new FirefoxDriver();
+				break;
+			case "safari":
+				// Safari only works on macOS
+				driver = new SafariDriver();
+				break;
+			default:
+				throw new IllegalArgumentException("Browser not supported on macOS: " + browserName);
+			}
+		} else {
+			throw new IllegalArgumentException("Unsupported platform: " + platform);
+		}
 
-        if (driver != null) {
-            driver.manage().window().maximize(); // Maximize the window on initialization
-        }
+		if (driver != null) {
+			driver.manage().window().maximize(); // Maximize the window on initialization
+		}
 
-        return driver;
-    }
+		return driver;
+	}
 
 	public boolean invokeApp(String browser, String url) {
 		boolean bReturn = false;
@@ -121,7 +121,7 @@ public class GenericWrappers {
 			driver.get(url);
 
 			primaryWindowHandle = driver.getWindowHandle();
-			Thread.sleep(3000);			
+			Thread.sleep(3000);
 			Reporter.reportStep("The URL : " + url + " launched successfully in" + browser + " browser ", "PASS");
 			bReturn = true;
 
@@ -155,15 +155,15 @@ public class GenericWrappers {
 			Reporter.reportStep(fieldName + " button is clicked Successfully.", "PASS");
 			bReturn = true;
 
-	} catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-			Reporter.reportStep("The Field "+fieldName+" could not be clicked.", "FAIL");
-	}
-	return bReturn;
+			Reporter.reportStep("The Field " + fieldName + " could not be clicked.", "FAIL");
+		}
+		return bReturn;
 
 	}
 
-	//It will wait until the element is visible for 3 minutes 
+	// It will wait until the element is visible for 3 minutes
 	public static boolean clickbyXpathlongwait(WebElement xpath, String fieldName) {
 		boolean bReturn = false;
 		try {
@@ -195,7 +195,6 @@ public class GenericWrappers {
 
 	}
 
-	
 	public boolean verifyTitle(String title) {
 		boolean bReturn = false;
 		try {
@@ -230,7 +229,6 @@ public class GenericWrappers {
 		return bReturn;
 	}
 
-
 	public boolean enterValuebyXpath(WebElement xpath, String fieldname, String value) {
 		boolean bReturn = false;
 		try {
@@ -241,19 +239,18 @@ public class GenericWrappers {
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			Reporter.reportStep("The value: "+value+" could not be entered.", "FAIL");
+			Reporter.reportStep("The value: " + value + " could not be entered.", "FAIL");
 		}
 		return bReturn;
 	}
 
-	//to send keys to profileimage field
+	// to send keys to profileimage field
 	public void sendkeys(String value) {
 
 		driver.switchTo().alert().sendKeys(value);
 		driver.switchTo().alert().accept();
 	}
-	
-	
+
 	public boolean entertoiFrame(WebElement xpath, String fName) {
 		boolean bReturn = false;
 		try {
@@ -292,19 +289,18 @@ public class GenericWrappers {
 		}
 		return bReturn;
 	}
-	
+
 	public boolean verifyTextContainsByXpath(WebElement xpath, String text, String field) {
-	
+
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
 			String sText = xpath.getText();
 			if (sText.trim().contains(text)) {
-				Reporter.reportStep(field +"contains "+ text , "PASS");
+				Reporter.reportStep(field + "contains " + text, "PASS");
 				bReturn = true;
-				}
-			else {
-				Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
+			} else {
+				Reporter.reportStep(field + " did not contain :" + text, "FAIL");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -332,31 +328,30 @@ public class GenericWrappers {
 		}
 
 	}
-	
+
 	protected void scrollToElements(WebElement element) {
 		expWait(element);
 		jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
-        try {
-            Thread.sleep(2000); // Adding a slight delay to allow the scroll to complete
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-	
-	public boolean verifyElementVisible(WebElement xpath, String fieldName){
+		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
+		try {
+			Thread.sleep(2000); // Adding a slight delay to allow the scroll to complete
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean verifyElementVisible(WebElement xpath, String fieldName) {
 		boolean bReturn = false;
 		try {
 			expWait(xpath);
-		    if (xpath.isDisplayed()){
-			Reporter.reportStep("Page contains "+ fieldName, "PASS");
-			bReturn = true;
-		    }
-			else {
-				Reporter.reportStep("Page Doesn't contains "+ fieldName, "FAIL");
+			if (xpath.isDisplayed()) {
+				Reporter.reportStep("Page contains " + fieldName, "PASS");
+				bReturn = true;
+			} else {
+				Reporter.reportStep("Page Doesn't contains " + fieldName, "FAIL");
 			}
 		} catch (Exception e) {
-				
+
 		}
 		return bReturn;
 	}
@@ -402,8 +397,6 @@ public class GenericWrappers {
 		}
 
 	}
-
-	
 
 	public String randomnames(int num) {
 
@@ -466,7 +459,7 @@ public class GenericWrappers {
 		return bReturn;
 	}
 
-	@SuppressWarnings("deprecation")	     
+	@SuppressWarnings("deprecation")
 	public static void enableWifi() {
 		try {
 			// Process process = Runtime.getRuntime().exec("netsh interface set interface\\
@@ -496,7 +489,7 @@ public class GenericWrappers {
 	public static boolean backnavigation(WebElement xpath, String text) {
 		boolean bReturn = false;
 		try {
-             
+
 			driver.navigate().back();
 			expWaitlong(xpath);
 			String text2 = xpath.getText();
@@ -515,8 +508,6 @@ public class GenericWrappers {
 		return bReturn;
 	}
 
-	
-	
 	public WebElement scrollToElement(WebElement element) {
 		int maxScrolls = 20; // Maximum number of scroll attempts
 		int scrollCount = 0;
@@ -544,223 +535,225 @@ public class GenericWrappers {
 		Reporter.reportStep("element not found ", "FAIL");
 		return element;
 	}
-	 
-		public void scrollToElementAndClick(WebElement xpath) {
-			int maxScrolls = 20; // Maximum number of scrolls to perform in one direction
-			int scrollCount = 0;
-			boolean isElementFound = false;
 
+	public void scrollToElementAndClick(WebElement xpath) {
+		int maxScrolls = 20; // Maximum number of scrolls to perform in one direction
+		int scrollCount = 0;
+		boolean isElementFound = false;
+
+		while (scrollCount < maxScrolls) {
+			try {
+				if (xpath.isDisplayed()) {
+					jsExecutor.executeScript("arguments[0].scrollIntoView(true);", xpath);
+					xpath.click();
+					System.out.println("Element found and clicked.");
+					isElementFound = true;
+					Reporter.reportStep("element found and clicked", "PASS");
+					break;
+				}
+			} catch (Exception e) {
+				scrollPageDown();
+				scrollCount++;
+			}
+		}
+
+		if (!isElementFound) {
+			scrollCount = 0; // Reset scroll count for scrolling up
 			while (scrollCount < maxScrolls) {
 				try {
 					if (xpath.isDisplayed()) {
-						jsExecutor.executeScript("arguments[0].scrollIntoView(true);", xpath);
 						xpath.click();
 						System.out.println("Element found and clicked.");
 						isElementFound = true;
-						Reporter.reportStep("element found and clicked", "PASS");
 						break;
 					}
 				} catch (Exception e) {
-					scrollPageDown();
+					scrollPageUp();
 					scrollCount++;
 				}
 			}
-
-			if (!isElementFound) {
-				scrollCount = 0; // Reset scroll count for scrolling up
-				while (scrollCount < maxScrolls) {
-					try {
-						if (xpath.isDisplayed()) {
-							xpath.click();
-							System.out.println("Element found and clicked.");
-							isElementFound = true;
-							break;
-						}
-					} catch (Exception e) {
-						scrollPageUp();
-						scrollCount++;
-					}
-				}
-			}
-
-			if (!isElementFound) {
-				Reporter.reportStep("element not found", "FAIL");
-				System.out.println("Element not found after scrolling up and down.");
-			}
 		}
 
-		
-		public void scrollPageDown() {
-			jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
+		if (!isElementFound) {
+			Reporter.reportStep("element not found", "FAIL");
+			System.out.println("Element not found after scrolling up and down.");
 		}
+	}
 
-		public void scrollPageUp() {
-			jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
-		}
-    
+	public void scrollPageDown() {
+		jsExecutor.executeScript("window.scrollBy(0, window.innerHeight);");
+	}
 
-    
-    
-    
-    
+	public void scrollPageUp() {
+		jsExecutor.executeScript("window.scrollBy(0, -window.innerHeight);");
+	}
 
-  
-    
-    public int extractintvalue(String str) {
-    	 // Use regular expression to remove all non-digit characters
-        String numbersOnly = str.replaceAll("\\D+", "");
-        
-        // Convert the extracted string to an integer (optional)
-        int extractedValue = Integer.parseInt(numbersOnly);
-        
+	public int extractintvalue(String str) {
+		// Use regular expression to remove all non-digit characters
+		String numbersOnly = str.replaceAll("\\D+", "");
+
+		// Convert the extracted string to an integer (optional)
+		int extractedValue = Integer.parseInt(numbersOnly);
+
 //        System.out.println("Extracted numbers: " + numbersOnly);
-        System.out.println("Extracted integer value: " + extractedValue);
+		System.out.println("Extracted integer value: " + extractedValue);
 		return extractedValue;
 	}
-    
 
+	public void pass(String message) {
 
-    
-    public void pass(String message) {
-		
-    	Reporter.reportStep(message, "PASS");
+		Reporter.reportStep(message, "PASS");
 	}
-    public void fail(String message) {
-    	
-    	Reporter.reportStep(message, "FAIL");
-    }
 
-    public boolean isUserOnNextPage(WebDriver driver, String element, String Pname) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
-            Reporter.reportStep("User navigated to Correct Page : "+Pname, "INFO");
-            return true;
-        } catch (Exception e) {
-        	 Reporter.reportStep("User navigated is not navigated to correct Page : "+Pname, "FAIL");
-        	 return false;
-        }
-    }
-    
-    public boolean verifyDynamicContentByXpath(String xpath, String text, String field) {
-    	
+	public void fail(String message) {
+
+		Reporter.reportStep(message, "FAIL");
+	}
+
+	public boolean isUserOnNextPage(WebDriver driver, String element, String Pname) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		try {
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+			Reporter.reportStep("User navigated to Correct Page : " + Pname, "INFO");
+			return true;
+		} catch (Exception e) {
+			Reporter.reportStep("User navigated is not navigated to correct Page : " + Pname, "FAIL");
+			return false;
+		}
+	}
+
+	public boolean verifyDynamicContentByXpath(String xpath, String text, String field) {
+
 		boolean bReturn = false;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 			String sText = driver.findElement(By.xpath(xpath)).getText();
 			if (sText.trim().contains(text)) {
-				Reporter.reportStep(field +" contains "+ text , "PASS");
+				Reporter.reportStep(field + " contains " + text, "PASS");
 				bReturn = true;
-				}
-			else {
-				//Reporter.reportStep(field+" did not contain :" + text, "FAIL");				
+			} else {
+				// Reporter.reportStep(field+" did not contain :" + text, "FAIL");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return bReturn;
 	}
-    
-    public boolean verifyVideoPlayingByPlayPause(WebElement videoElement, String videotype) {
-    	Boolean bReturn=false;
-    	try {
-            // Locate the video element
-    		scrollToElements(videoElement);
-           
-            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-            // Get the initial playback time by casting to Number first
-            Number initialTimeNumber = (Number) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
-            Reporter.reportStep(" Video Starting time screenshot", "INFO");
-            double initialTime = initialTimeNumber.doubleValue();
+	public boolean verifyVideoPlayingByPlayPause(WebElement videoElement, String videotype) {
+		Boolean bReturn = false;
+		try {
+			// Locate the video element (assuming videoElement is already defined and valid)
+			scrollToElements(videoElement);
 
-            // Wait for a short period (e.g., 2 seconds)
-            Thread.sleep(5000);
-            Reporter.reportStep(" Video Ending time screenshot", "INFO");
-            // Get the playback time after the wait by casting to Number first
-            Number finalTimeNumber = (Number) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
-            double finalTime = finalTimeNumber.doubleValue();
-            
-            // Verify the playback status by comparing the times
-            if (finalTime > initialTime) {
-            	 Reporter.reportStep("Video is Playing and Progressed from " + initialTime + " s to " + finalTime + " s.", "PASS");
-                
-                bReturn = true;
-            } else {
-            	Reporter.reportStep("The video is not playing; It's playback time did not progress.","FAIL");
-            }
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
+			// Get the initial playback time
+			Number initialTimeNumber = (Number) jsExecutor.executeScript("return arguments[0].currentTime;",
+					videoElement);
+			Reporter.reportStep("Video Starting time screenshot", "INFO");
+			double initialTime = initialTimeNumber.doubleValue();
+
+			// Wait for a short period (e.g., 5 seconds is good, gives enough time for a
+			// real play)
+			Thread.sleep(5000);
+			Reporter.reportStep("Video Ending time screenshot", "INFO");
+
+			// Get the playback time after the wait
+			Number finalTimeNumber = (Number) jsExecutor.executeScript("return arguments[0].currentTime;",
+					videoElement);
+			double finalTime = finalTimeNumber.doubleValue();
+
+			// Define a minimum progression threshold (e.g., 1.0 second)
+			double minProgressionThreshold = 1.0; // The video should progress by at least 1 second
+
+			// Verify the playback status by comparing the times with a threshold
+			if (finalTime - initialTime >= minProgressionThreshold) {
+				Reporter.reportStep(
+						videotype + " is Playing and Progressed from " + initialTime + " s to " + finalTime + " s.", "PASS");
+				bReturn = true;
+			} else {
+				Reporter.reportStep(videotype + " is not playing; Its playback time did not progress sufficiently. "
+						+ "(Initial: " + initialTime + "s, Final: " + finalTime + "s).", "FAIL&RUN");
+			}
+
+		} catch (Exception e) {
+			Reporter.reportStep("An error occurred while trying to verify video playback: " + e.getMessage(), "FAIL");
+			e.printStackTrace();
+		}
 		return bReturn;
-    }
-    
-    public boolean checkVideoIsplaying(WebElement videoElement, String videotype) {
-   	 boolean bReturn = false;
-   	 try {
-            // Locate the video element using a suitable selector
-         //   WebElement videoElement = driver.findElement(By.cssSelector("div.semi-circle-img video"));
-   		
-            scrollToElements(videoElement);
-            Thread.sleep(5000);
-            // Create a JavascriptExecutor instance
-            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+	}
 
-            // Execute JavaScript to check the 'paused' and 'ended' properties
-            
-            Boolean isVideoPlaying = (Boolean) jsExecutor.executeScript(
-                    "return arguments[0].paused === false && arguments[0].ended === false && arguments[0].readyState > 2 && arguments[0].error === null;",
-                    videoElement
-                );
+	public boolean checkVideoIsplaying(WebElement videoElement, String videotype) {
+		boolean bReturn = false;
+		try {
+			// Locate the video element using a suitable selector
+			// WebElement videoElement =
+			// driver.findElement(By.cssSelector("div.semi-circle-img video"));
 
-            // Verify the playback status
-            if (isVideoPlaying) {
-                Reporter.reportStep("The "+videotype+" is currently playing", "PASS");
-                bReturn = true;
-            } else {
-           	 Reporter.reportStep("The "+videotype+" is currently not playing", "FAIL");
-            }
+			scrollToElements(videoElement);
+			Thread.sleep(5000);
+			// Create a JavascriptExecutor instance
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-   	 return bReturn;
-   }
-    
-    public boolean checkVideoIsplayingNew(WebElement videoElement, String videoType) {
-    	 try {
-    		 scrollToElements(videoElement);
-             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+			// Execute JavaScript to check the 'paused' and 'ended' properties
 
-             // Get the video's INTERNAL currentTime. This exists even if no timer is visible.
-             double initialTime = (double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+			Boolean isVideoPlaying = (Boolean) jsExecutor.executeScript(
+					"return arguments[0].paused === false && arguments[0].ended === false && arguments[0].readyState > 2 && arguments[0].error === null;",
+					videoElement);
 
-             // Wait a short moment to allow the autoplaying video to advance.
-             Thread.sleep(2000);
+			// Verify the playback status
+			if (isVideoPlaying) {
+				Reporter.reportStep("The " + videotype + " is currently playing", "PASS");
+				bReturn = true;
+			} else {
+				Reporter.reportStep("The " + videotype + " is currently not playing", "FAIL");
+			}
 
-             // Get the currentTime again after the pause.
-             double finalTime = (double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bReturn;
+	}
 
-             // The only reliable proof of playback is if the time has advanced.
-             if (finalTime > initialTime) {
-                 Reporter.reportStep("The " + videoType + " background video is currently playing.", "PASS");
-                 System.out.println("SUCCESS: The " + videoType + " is playing. (Time advanced from " + initialTime + "s to " + finalTime + "s)");
-                 return true;
-             } else {
-                 Reporter.reportStep("The " + videoType + " background video is NOT playing. Its time did not advance.", "FAIL");
-                 System.out.println("FAILURE: The " + videoType + " is not playing. (Time stuck at " + initialTime + "s)");
-                 return false;
-             }
+	public boolean checkVideoIsplayingNew(WebElement videoElement, String videoType) {
+		try {
+			
+			scrollToElements(videoElement);
+			JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 
-         } catch (Exception e) {
-             e.printStackTrace();
-             Reporter.reportStep("An exception occurred while verifying video playback: " + e.getMessage(), "FAIL");
-             return false;
-         }
+			// Get the video's INTERNAL currentTime. This exists even if no timer is
+			// visible.
+			double initialTime = (double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
 
-    }
+			// Wait a short moment to allow the autoplaying video to advance.
+			Thread.sleep(2000);
+
+			// Get the currentTime again after the pause.
+			double finalTime = (double) jsExecutor.executeScript("return arguments[0].currentTime;", videoElement);
+
+			// The only reliable proof of playback is if the time has advanced.
+			if (finalTime > initialTime) {
+				Reporter.reportStep("The " + videoType + " background video is currently playing.", "PASS");
+				System.out.println("SUCCESS: The " + videoType + " is playing. (Time advanced from " + initialTime
+						+ "s to " + finalTime + "s)");
+				return true;
+			} else {
+				Reporter.reportStep("The " + videoType + " background video is NOT playing. Its time did not advance.",
+						"FAIL");
+				System.out
+						.println("FAILURE: The " + videoType + " is not playing. (Time stuck at " + initialTime + "s)");
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			Reporter.reportStep("An exception occurred while verifying video playback: " + e.getMessage(), "FAIL");
+			return false;
+		}
+
+	}
 
 }

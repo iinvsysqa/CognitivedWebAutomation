@@ -104,6 +104,7 @@ public class LandingPageNew extends GenericWrappers{
     }
 
     public boolean checkSemiCircleVideoPlaying(String videotype) {
+    	scrollPageDown();
     	return checkVideoIsplayingNew(semicircleVideo,videotype);
     }
     

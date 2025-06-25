@@ -25,8 +25,8 @@ public class TC10_VideoCheck extends WebApplicationWrappers {
 	
 	@BeforeClass
 	public void startTestCase() {
-		testCaseName = " TC09 - Check Purchased course pages";
-		testDescription = " Check user able to access Purchased course and Play videos ";
+		testCaseName = " TC10 - Check Demo and Purchased Video is Playing";
+		testDescription = " Check Demo and Purchase video is palying after Course Purchase ";
 	}
 
 
