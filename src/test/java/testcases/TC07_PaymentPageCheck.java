@@ -48,6 +48,7 @@ public class TC07_PaymentPageCheck extends WebApplicationWrappers {
 		
 		userhomepage.checkUserInUserCoursesPage();
 		Thread.sleep(3000);
+		cartpage.checkItemsAddedtoCart();
 		userhomepage.clickCourse1ExploreBtn();
 		userhomepage.clickAddtoCartBtn();
 		Thread.sleep(1000);

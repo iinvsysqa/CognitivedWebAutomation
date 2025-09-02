@@ -42,6 +42,7 @@ public class TC06_AddCoursesToCart extends WebApplicationWrappers {
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		homepage.checkUserInUserHomePage();
+		cartpage.checkItemsAddedtoCart();
 		homepage.clickExploreCourseButton();
 		Thread.sleep(5000);
 		userhomepage.checkUserInUserCoursesPage();

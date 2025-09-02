@@ -48,6 +48,7 @@ public class TC10_VideoCheck extends WebApplicationWrappers {
 		landingpagenew.clickgetStartedButton();
 		signInPagenew.signInUser("iinvsysqa@gmail.com","Welcome@123");
 		homepage.checkUserInUserHomePage();
+		cartpage.checkItemsAddedtoCart();
 		homepage.clickExploreCourseButton();
 		Thread.sleep(3000);
 		coursespage.clickCourse1ExploreBtn();

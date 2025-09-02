@@ -42,6 +42,7 @@ public class CoursesPage extends GenericWrappers {
 	
 	
 	
+	
 
 	@FindBy(xpath = "//div[@class='logout-button-out']/div[1]")
 	private WebElement logOutBtn;
@@ -95,6 +96,8 @@ public class CoursesPage extends GenericWrappers {
 		
 		isUserOnNextPage(driver,"//*[@class='home-page-header-menu-container-words']/a[1]", "User Home Page");
 	}
+	
+	
 	
 	public void clickProfileBtn() {
 		scrollToElements(profileBtn);

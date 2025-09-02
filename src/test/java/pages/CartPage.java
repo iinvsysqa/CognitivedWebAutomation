@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -84,7 +85,8 @@ public class CartPage extends WebApplicationWrappers {
 	@FindBy(xpath = "//div[@id='contact-submit']/button")
 	private WebElement razorPayContinueBtn;
 	
-	
+	@FindBy(xpath = "//*[@class='cart-notification-badge']")
+	private WebElement cartItemCount;
 	
 	public void clickProceedPayBtn() {
 		clickbyXpath(proceedPayBtn, " Buy now button  ");
@@ -149,6 +151,32 @@ public class CartPage extends WebApplicationWrappers {
 		isUserOnNextPage(driver, "//button[@class='proceed-btn']", " Proceed to Payment Page ");
 	}
 	
+
+	public void checkItemsAddedtoCart() throws InterruptedException {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    try {
+	        // wait until the badge shows up after adding an item
+	        WebElement cartItemCount = wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(
+	                By.xpath("//*[contains(@class,'cart-notification-badge')]")
+	            )
+	        );
+
+	        int count = Integer.parseInt(cartItemCount.getText().trim());
+
+	        if (count > 0) {
+	            clickcartButton();
+	            clickCartItemRemoveBtn();
+	            checkItemremoveToast("Item removed from cart");
+	            Thread.sleep(6000); // consider replacing with explicit wait for toast
+	            clickHomeBtn();
+	        }
+
+	    } catch (TimeoutException e) {
+	        System.out.println("Cart badge did not appear — no items were added to cart.");
+	    }
+	}
 
 	public void verifycoursecontentpage() throws Exception {
 
